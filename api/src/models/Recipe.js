@@ -14,8 +14,8 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    resume: {
-      type: DataTypes.STRING,
+    summary: {
+      type: DataTypes.TEXT,
       allowNull: false
     },
     rating: {
