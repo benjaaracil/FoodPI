@@ -6,6 +6,8 @@ const axios = require("axios");
 const {Diet, Recipe, Recipe_Diet} = require("../../db.js");
 //Me traigo los operadores de sequelize
 const { Op } = require ("sequelize");
+//Me traigo la Api Key
+const {APP_API_KEY} = process.env;
 
 //Endpoint de prueba para ver si funca la pagina:
 router.get("/", (req,res) => {
