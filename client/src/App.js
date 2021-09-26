@@ -1,9 +1,15 @@
 import './App.css';
+import React, { useState } from 'react';
+import {Route} from 'react-router-dom';
 
 function App() {
+
+
+
+  
   return (
     <div className="App">
-      <h1>Henry Food</h1>
+      <h1 className = "HomeButton"> Home </h1>
     </div>
   );
 }
