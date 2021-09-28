@@ -7,7 +7,6 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,           //Cuando haga el post tengo que requerirlo como UUIDV4...
       defaultValue: DataTypes.UUIDV4, 
-      allowNull: false,
       primaryKey: true
     },
     title: {
