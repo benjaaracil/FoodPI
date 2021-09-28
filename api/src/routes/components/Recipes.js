@@ -4,9 +4,9 @@ const router = express.Router();
 // const axios = require("axios");
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 //Me traigo las tablas de la DB
-const {Diet, Recipe, Recipe_Diet} = require("../../db.js");
+const {Op, Diet, Recipe, Recipe_Diet} = require("../../db.js");
 //Me traigo los operadores de sequelize
-const { Op } = require ("sequelize");
+// const { Op } = require ("sequelize");
 const { response } = require("express");
 //Me traigo la Api Key
 require('dotenv').config();
@@ -69,24 +69,27 @@ router.get("/:id", async (req,res) => {
         // console.log(ApiRes)
 
         //mapeo para devolver los datos que se necesitan
-        ApiRes = ApiRes.assign({}, ApiRes.id, ApiRes.title, ApiRes.summary, ApiRes.spoonacularScore, ApiRes.healthScore, ApiRes.analyzedInstructions )
-        console.log(ApiRes)
-        let LocalRes = await Recipe.findAll()
-        //Evaluo si me llega algo por query yn en caso de que sim si me coincide el name con algo de la api o mi db
-        if (id){
-            // console.log(ApiRes)
-            let ArrNameAPI = ApiRes.filter(receta => receta.id === id);
-            let ArrNameDB = LocalRes.filter(receta => receta.id === id);
-            // console.log(ArrNameAPI)
-            if (!ArrNameAPI.length && !ArrNameDB.length){
-                res.status(404).send("Detalle no disponible")
-            }
-            else {
-                res.status(200).json([...ArrNameAPI, ...ArrNameDB])
-            }
+        let ApiRespuesta = {
+            id: ApiRes.id, 
+            title: ApiRes.title, 
+            summary: ApiRes.summary, 
+            spoonacularScore: ApiRes.spoonacularScore, 
+            healthScore: ApiRes.healthScore, 
+            analyzedInstructions: ApiRes.analyzedInstructions,
+            diets: ApiRes.diets
+        }
+        // console.log(ApiRespuesta)
+        
+        // REVISAR!!!!
+        // const LocalRes = await Recipe.findOne({
+        //     where: {id}
+        // }) 
+        
+        if (ApiRespuesta || LocalRes){
+            res.status(200).json(ApiRespuesta ? ApiRespuesta : LocalRes);
         }
         else {
-            res.status(200).json([...ApiRes, ...LocalRes])
+            res.status(404).send("Detalle no disponible");
         }
     }
     catch(err){
