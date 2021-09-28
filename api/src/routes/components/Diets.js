@@ -1,17 +1,17 @@
 const express = require ("express");
 const router = express.Router();
-//Me traigo Axios
-const axios = require("axios");
+//Me traigo Fetch
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 //Me traigo las tablas de la DB
 const {Diet, Recipe, Recipe_Diet} = require("../../db.js");
 //Me traigo los operadores de sequelize
 const { Op } = require ("sequelize");
+const { response } = require("express");
 //Me traigo la Api Key
 require('dotenv').config();
 const {APP_API_KEY} = process.env;
 
-//Endpoint de prueba para ver si funca la pagina:
-router.get("/types", async (req,res) => {  
+router.get("/", async (req,res) => {  
     try{
         //Me fijo si en mi db ya estan cargados los tipos de dieta
         let hay = await Diet.findAll()
