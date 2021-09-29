@@ -22,6 +22,8 @@ router.get("/", async (req,res) => {
         // console.log(name)
         //ApiRes contiene los datos de la Api
         let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true`);
+        // let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&titleMatch=${name}&&addRecipeInformation=true&number=100`)
+        //Deberia buscar asi como estoy buscando??
         let ApiRes = await response.json();
 
         //mapeo para devolver los datos que se necesitan
@@ -35,7 +37,7 @@ router.get("/", async (req,res) => {
         }));
         // console.log(ApiRes)
         let LocalRes = await Recipe.findAll()
-        //Evaluo si me llega algo por query yn en caso de que sim si me coincide el name con algo de la api o mi db
+        //Evaluo si me llega algo por query y en caso de que si, si me coincide el name con algo de la api o mi db.
         if (name){
             // console.log(ApiRes)
             let ArrNameAPI = ApiRes.filter(receta => receta.title.includes(name));

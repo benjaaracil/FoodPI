@@ -6,7 +6,7 @@ const {Diet, Recipe} = require("../../db.js");
 
 router.post("/", async (req,res) => {
     //Recibo por body la nueva receta a crear
-    const {title, summary, spoonacularScore, healthScore, analyzedInstructions, dietID} = req.body;
+    const {title, summary, spoonacularScore, healthScore, analyzedInstructions, dietName} = req.body;
     try{
         //Creo la nueva receta
         const recipe = await Recipe.create({
@@ -17,9 +17,9 @@ router.post("/", async (req,res) => {
             analyzedInstructions
         })
         //Busco si la dieta que me pasaron coincide con alguna de la base de datos (Si no coincide me devuelve null y el catch agarra el error ya que no puedo generar la relacion entre tablas con un Null)
-        const dieta = await Diet.findOne({
+        const dieta = await Diet.findAll({
             where: {
-                id: dietID
+                name: dietName
             }
         })
         console.log(recipe);
