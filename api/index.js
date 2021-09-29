@@ -19,10 +19,39 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-
+const {Diet} = require("./src/db.js");
 // Syncing all the models at once.
-conn.sync({ force: true }).then(() => {
+//IMPORTANTE EL FORCE EN TRUE/FALSE SEGUN LO QUE YO REQUIERA, EN TRUE ME REFRESCA LA BASE DE DATOS
+conn.sync({ force: false }).then(() => {
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
 });
+
+//LOADER DIETS
+const Diets = ['Gluten free',
+'Ketogenic',
+'Vegetarian',
+'Lacto-Vegetarian',
+'Ovo-Vegetarian',
+'Vegan',
+'Pescetarian',
+'Paleo',
+'Primal',
+'Whole30',
+'Low FODMAP'
+]
+function preload (e){
+  //Me fijo si en mi db ya estan cargados los tipos de dieta
+  if (!e.length){
+    Diets.forEach(async (Dieta) => {
+      await Diet.create({
+        name: Dieta
+      })
+    });
+  }
+}
+
+Diet.findAll()
+.then(e => preload(e))
+//Luego la uso en Diets (GET /types)

@@ -32,8 +32,11 @@ router.post("/", async (req,res) => {
         })
         // console.log(dieta)
         //Genero la relación entre tablas
-        recipe.addDieta(dieta)
-        res.status(200).json(recipe);
+        if (dieta){
+            recipe.addDieta(dieta)
+            res.status(200).json(recipe);
+        }
+        else res.status(200).send("Dieta no disponible")
     }
     catch(err){
         res.status(404).send(err)
