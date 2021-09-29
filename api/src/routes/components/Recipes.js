@@ -3,10 +3,9 @@ const router = express.Router();
 //Me traigo Fetch
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 //Me traigo las tablas de la DB
-const {Diet, Recipe, Recipe_Diet} = require("../../db.js");
+const {Recipe} = require("../../db.js");
 //Me traigo los operadores de sequelize
 const { Op } = require ("sequelize");
-const { response } = require("express");
 //Me traigo la Api Key
 require('dotenv').config();
 const {APP_API_KEY} = process.env;
@@ -63,7 +62,7 @@ router.get("/:id", async (req,res) => {
     // console.log(id)
     try{
         //Acá me pregunto si el id tiene 36 caracteres(lo que seria equivalente a un UUID)
-        if (id.length = 36){
+        if (id.length === 36){
             //Si es asi, lo busco en mi tabla
             let LocalRes = await Recipe.findAll({
                 where:{

@@ -1,15 +1,8 @@
 const express = require ("express");
 const router = express.Router();
-//Me traigo Fetch
-const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
+
 //Me traigo las tablas de la DB
 const {Diet, Recipe} = require("../../db.js");
-//Me traigo los operadores de sequelize
-const { Op } = require ("sequelize");
-const { response } = require("express");
-//Me traigo la Api Key
-require('dotenv').config();
-const {APP_API_KEY} = process.env;
 
 router.post("/", async (req,res) => {
     //Recibo por body la nueva receta a crear
