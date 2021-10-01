@@ -4,10 +4,10 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-image: url(../img/FondoHome.jpg);
+    background-image: url(../../img/FondoHome.jpg);
     text-align: center;
   }
-.HomeButton{
+.LandingButton{
   position: relative;
-   color: greenyellow;
+  color: greenyellow;
 }

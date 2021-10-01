@@ -1,14 +1,20 @@
 import './App.css';
 import React, { useState } from 'react';
 import {Route} from 'react-router-dom';
-import Home from "./components/Home";
+import Landing from "./components/Landing/Landing";
+import Home from './components/Home/Home';
 
-function App() {  
+function App() { 
   return (
-    <Route
-    path='/'
-    render={() => <Home />}
-  />
+    <div>
+      <Route
+      exact path='/' component={Landing}
+      />
+      <Route 
+      exact path='/home' component={Home}
+      />
+
+    </div>
   );
 }
 
