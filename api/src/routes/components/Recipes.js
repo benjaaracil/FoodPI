@@ -27,13 +27,16 @@ router.get("/", async (req,res) => {
         let ApiRes = await response.json();
 
         //mapeo para devolver los datos que se necesitan
-        ApiRes = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions}) => ({
+        ApiRes = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions, image, diets}) => ({
             id,
             title,
             summary,
             spoonacularScore,
             healthScore,
-            analyzedInstructions
+            analyzedInstructions,
+            image,
+            diets
+
         }));
         // console.log(ApiRes)
         let LocalRes = await Recipe.findAll()
