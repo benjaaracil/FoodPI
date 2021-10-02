@@ -13,7 +13,7 @@ React.useEffect(() => {
 
 function handleSubmit(e){
     e.preventDefault();
-        dispatch(input);
+        dispatch(getRecipes(input));
         setInput("");
 }
 function handleChange(e){

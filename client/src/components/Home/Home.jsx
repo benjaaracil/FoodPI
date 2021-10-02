@@ -1,22 +1,18 @@
 import React from "react";
-import NavBar from "../SearchBar/SearchBar"
-import "./Home.css";
+import SearchBar from "../SearchBar/SearchBar"
 import Cards from "../RecipeCards/Cards";
+import "./Home.css";
 
-function Home({onSearch}) {
-
+function Home() {
      return (
         <div>
-            <NavBar
-                onSearch={onSearch}
-            />
+            <SearchBar/>
             <Cards/>
             
         
         
         
         </div>
-        
     )
  }
 

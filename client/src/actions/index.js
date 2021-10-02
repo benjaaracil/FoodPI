@@ -1,22 +1,33 @@
+import axios from "axios"
 export const GetRecipes = "GET_RECIPES";
 export const GetRecipesID = "GET_RECIPES_ID";
 export const GetRecipesByName = "GET_RECIPES_BYNAME";
 
 export function getRecipes (name){
-    return function (dispatch){
+    return async function (dispatch){
         if (name){
-            return fetch(`http://localhost:3001/recipes?name=${name}`)
-                .then(response => response.json())
-                .then(json => {
-                  dispatch({ type: "GET_RECIPES", payload: json });
-                });
+            try{
+                var json = await (await axios.get(`http://localhost:3001/recipes?name=${name}`)).data
+                return dispatch ({
+                    type: "GET_RECIPES", 
+                    payload: json
+                })
+            }
+            catch(error){
+                console.log(error)
+            }
         }
         else {
-            return fetch(`http://localhost:3001/recipes`)
-                .then(response => response.json())
-                .then(json => {
-                  dispatch({ type: "GET_RECIPES", payload: json });
-                });
+            try{
+                var json = await (await axios.get(`http://localhost:3001/recipes`)).data
+                return dispatch ({
+                    type: "GET_RECIPES",
+                    payload: json
+                })
+            }
+            catch(error){
+                console.log(error)
+            }
         }
     };
 };
