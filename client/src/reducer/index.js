@@ -1,4 +1,4 @@
-import {GetRecipes, GetRecipesID} from "../actions";
+import {GetRecipes, GetRecipesID, GetRecipesByName} from "../actions";
 
 const initialState = {
 recipes: [],
@@ -15,6 +15,12 @@ function rootReducer (state = initialState, {type, payload}){
             return {
                 ...state,
                 recipe: payload 
+            }
+        }
+        case GetRecipesByName:{
+            return {
+                ...state,
+                recipes: payload
             }
         }
     }

@@ -1,23 +1,22 @@
 import React from "react";
+import NavBar from "../SearchBar/SearchBar"
 import "./Home.css";
-import { Link } from 'react-router-dom';
+import Cards from "../RecipeCards/Cards";
 
-function Home() {
-const [input, setInput] = React.useState("");
+function Home({onSearch}) {
+
      return (
-        <form onSubmit = {(e) => {
-            e.preventDefault();
-            // onSearch(input);
-            setInput("");
-        }}>
         <div>
-            <input placeholder = "Recipe..." onChange = {e => {
-                setInput(e.target.value)
-                console.log(e.target.value)}
-            }/>
-            <button>Search</button>
+            <NavBar
+                onSearch={onSearch}
+            />
+            <Cards/>
+            
+        
+        
+        
         </div>
-        </form>
+        
     )
  }
 
