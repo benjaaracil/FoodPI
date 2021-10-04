@@ -1,7 +1,6 @@
 import axios from "axios"
 export const GetRecipes = "GET_RECIPES";
 export const GetRecipesID = "GET_RECIPES_ID";
-export const GetRecipesByName = "GET_RECIPES_BYNAME";
 
 export function getRecipes (name){
     return async function (dispatch){
@@ -9,7 +8,7 @@ export function getRecipes (name){
             try{
                 var json = await (await axios.get(`http://localhost:3001/recipes?name=${name}`)).data
                 return dispatch ({
-                    type: "GET_RECIPES", 
+                    type: GetRecipes, 
                     payload: json
                 })
             }
@@ -21,7 +20,7 @@ export function getRecipes (name){
             try{
                 var json = await (await axios.get(`http://localhost:3001/recipes/`)).data
                 return dispatch ({
-                    type: "GET_RECIPES",
+                    type: GetRecipes,
                     payload: json
                 })
             }
@@ -36,7 +35,7 @@ export function getRecipesID (id){
         try{
             var json = await (await axios.get(`http://localhost:3001/recipes/${id}`)).data
             return dispatch ({
-                type: "GET_RECIPES_ID", 
+                type: GetRecipesID, 
                 payload: json
             })
         }

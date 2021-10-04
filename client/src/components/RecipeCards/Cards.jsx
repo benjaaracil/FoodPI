@@ -11,9 +11,11 @@ const dispatch = useDispatch();
 
 // console.log(allCards);
 
-React.useEffect(()=> {
-    dispatch(getRecipes())
-}, [dispatch]);
+React.useEffect(() => {
+    (async () => {
+        dispatch(await getRecipes())
+    })()
+  },[])
 
 if (allCards && allCards.recipes.length){
 return (

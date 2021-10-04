@@ -7,10 +7,6 @@ export default function SearchBar(){
 const [input, setInput] = React.useState("");
 const dispatch = useDispatch();
 
-React.useEffect(() => {
-    dispatch(getRecipes(input));
-  }, [input, dispatch]);
-
 function handleSubmit(e){
     e.preventDefault();
         dispatch(getRecipes(input));
@@ -25,7 +21,7 @@ return (
     <form onSubmit = {handleSubmit}>
         <div>
             <input placeholder = "Recipe..." onChange = {handleChange}/>
-            <button>Search</button>
+            <button type = "submit">Search</button>
         </div>
     </form>
     );
