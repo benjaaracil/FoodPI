@@ -1,13 +1,52 @@
-.App {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background-image: url(../../img/FondoHome.jpg);
-    text-align: center;
-  }
-.LandingButton{
-  position: relative;
-  color: greenyellow;
+*{
+  margin: 0;
+  padding: 0;
+}
+.App{
+  margin: 0;
+  line-height: 1,6;
+  font-family: 'Bebas Neue', cursive;
+  color: aliceblue;
+
+}
+#showcase{
+  background-image: url(../../img/FondoHome.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+}
+.Link{
+  background: transparent;
+  text-decoration: none;
+  font-size: 100px;
+  color: black;
+  opacity: 70%;
+  font-size: 320px;
+  /* border: 1px solid; */
+  /* border-color: RGB(100, 83 , 50);
+  background-color: RGB(100, 83 , 50); */
+}
+.Link:hover{
+opacity: 85%;
+}
+.Content{
+  position: absolute;
+  right: 10%;
+  bottom: 45%;
+}
+.Join{
+  position: absolute;
+  right: 13%;
+  bottom: 47%;
+  font-size: 50px;
+}
+#Logo{
+  position: absolute;
+  right: 11%;
+  bottom: 1%;
+  width: 490px;
 }

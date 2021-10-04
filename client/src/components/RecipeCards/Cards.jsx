@@ -9,7 +9,7 @@ export default function Cards () {
 const allCards = useSelector((state) => state);
 const dispatch = useDispatch();
 
-console.log(allCards);
+// console.log(allCards);
 
 React.useEffect(()=> {
     dispatch(getRecipes())

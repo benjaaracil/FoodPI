@@ -19,7 +19,7 @@ export function getRecipes (name){
         }
         else {
             try{
-                var json = await (await axios.get(`http://localhost:3001/recipes`)).data
+                var json = await (await axios.get(`http://localhost:3001/recipes/`)).data
                 return dispatch ({
                     type: "GET_RECIPES",
                     payload: json
@@ -32,8 +32,16 @@ export function getRecipes (name){
     };
 };
 export function getRecipesID (id){
-    return {
-        type: "GET_RECIPES_ID",
-        payload: id
+    return async function (dispatch){
+        try{
+            var json = await (await axios.get(`http://localhost:3001/recipes/${id}`)).data
+            return dispatch ({
+                type: "GET_RECIPES_ID", 
+                payload: json
+            })
+        }
+        catch(error){
+            console.log(error)
+        }
     }
 }
