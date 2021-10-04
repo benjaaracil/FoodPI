@@ -96,7 +96,9 @@ router.get("/:id", async (req,res) => {
                 spoonacularScore: ApiRes.spoonacularScore, 
                 healthScore: ApiRes.healthScore, 
                 analyzedInstructions: ApiRes.analyzedInstructions,
-                diets: ApiRes.diets
+                diets: ApiRes.diets,
+                image: ApiRes.image,
+                dishTypes: ApiRes.dishTypes
             }
             // console.log(ApiRespuesta)
             // console.log(LocalRes)
