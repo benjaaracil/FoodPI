@@ -17,21 +17,23 @@ export default function Detail (props){
     // console.log(Object.keys(rec).length)
     
     if (rec){
-        let diets = rec.recipe.diets;
-        let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
+        // let diets = rec.recipe.diets;
+        // let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
 
     return (
         <div>
             <h1>{rec.recipe.title}</h1>
-            <h2>Resumen: {rec.recipe.summary}</h2>
+            <img src={rec.recipe.image}/> 
             <ul>
-                {diets.forEach(element => {
-                   <li>Dieta: {element}</li>  //No funca el ForEach
-                })}
+                {/* {diets.forEach(element => {
+                    <li>Dieta: {element}</li>  //No funca el ForEach
+                })} */}
                 <li>Spoonacular Score: {rec.recipe.spoonacularScore}</li>
                 <li>Health Score: {rec.recipe.healthScore}</li>
+                <li>Tipo de Plato: {rec.recipe.dishTypes}</li>
                 {/* <li>{rec.recipe.analyzedInstructions}</li> */}
             </ul>
+            {rec.recipe.summary}
         </div>
     )
 }
