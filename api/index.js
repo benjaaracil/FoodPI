@@ -29,17 +29,18 @@ conn.sync({ force: false }).then(() => {
 });
 
 //LOADER DIETS
-const Diets = ['Gluten free',
-'Ketogenic',
-'Vegetarian',
-'Lacto-Vegetarian',
-'Ovo-Vegetarian',
-'Vegan',
-'Pescetarian',
-'Paleo',
-'Primal',
-'Whole30',
-'Low FODMAP'
+const Diets = [
+'gluten free',
+'ketogenic',
+'vegetarian',
+'lacto ovo vegetarian',
+'vegan',
+'pescatarian',
+'paleolithic',
+'primal',
+'whole 30',
+'fodmap friendly',
+'dairy free',
 ]
 function preload (e){
   //Me fijo si en mi db ya estan cargados los tipos de dieta
