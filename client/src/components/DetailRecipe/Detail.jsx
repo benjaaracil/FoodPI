@@ -17,7 +17,6 @@ export default function Detail (props){
     // console.log(Object.keys(rec).length)
     
     if (rec){
-        // let diets = rec.recipe.diets;
         // let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
 
     return (
@@ -25,15 +24,13 @@ export default function Detail (props){
             <h1>{rec.recipe.title}</h1>
             <img src={rec.recipe.image}/> 
             <ul>
-                {/* {diets.forEach(element => {
-                    <li>Dieta: {element}</li>  //No funca el ForEach
-                })} */}
+                <li>Dieta: {rec.recipe.diets}</li>
                 <li>Spoonacular Score: {rec.recipe.spoonacularScore}</li>
                 <li>Health Score: {rec.recipe.healthScore}</li>
                 <li>Tipo de Plato: {rec.recipe.dishTypes}</li>
                 {/* <li>{rec.recipe.analyzedInstructions}</li> */}
             </ul>
-            {rec.recipe.summary}
+            {rec.recipe.summary.replace(/<[^>]*>?/gm, '')}
         </div>
     )
 }

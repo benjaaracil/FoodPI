@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { getRecipes } from '../../actions';
 import "./Cards.css"
 import Card from '../RecipeCard/Card';
+import { Link } from 'react-router-dom';
 
 
 export default function Cards () {
@@ -23,11 +24,13 @@ return (
               {
                   allCards.recipes.map(p => {
                       return (
-                          <Card
-                            img = {p.image}
-                            name = {p.title}
-                            diets = {p.diets}
-                          />
+                          <Link to = {`/home/${p.id}`}>
+                            <Card
+                                img = {p.image}
+                                name = {p.title}
+                                diets = {p.diets}
+                            />
+                            </Link>
                       )
                   })
               }
