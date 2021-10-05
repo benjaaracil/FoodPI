@@ -30,7 +30,7 @@ export default function Detail (props){
                 <li>Tipo de Plato: {rec.recipe.dishTypes}</li>
                 {/* <li>{rec.recipe.analyzedInstructions}</li> */}
             </ul>
-            {rec.recipe.summary.replace(/<[^>]*>?/gm, '')}
+            {rec.recipe.summary?.replace(/<[^>]*>?/gm, '')}
         </div>
     )
 }

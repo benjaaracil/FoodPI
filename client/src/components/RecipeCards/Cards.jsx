@@ -34,8 +34,15 @@ return (
                       )
                   })
               }
+              <form>
+                <input TYPE="button" onClick={ () => window.location.reload()} VALUE="Refresh"/>
+              </form>
           </div>
         );
     }
-else return <h2>Receta no encontrada</h2>
+else return (
+    <div>
+        <h2>Cargando...</h2>
+    </div>
+)
 };

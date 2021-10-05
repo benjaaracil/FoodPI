@@ -7,10 +7,15 @@ export default function SearchBar(){
 const [input, setInput] = React.useState("");
 const dispatch = useDispatch();
 
-function handleSubmit(e){
+async function handleSubmit(e){
     e.preventDefault();
-        dispatch(getRecipes(input));
-        setInput("");
+            try {
+                dispatch(await getRecipes(input))
+            }
+            catch(error){
+                alert(error);
+            }
+    setInput("");
 }
 function handleChange(e){
     setInput(e.target.value)

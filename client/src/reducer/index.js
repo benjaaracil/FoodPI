@@ -1,4 +1,4 @@
-import {GetRecipes, GetRecipesID} from "../actions";
+import {GetRecipes, GetRecipesID } from "../actions";
 
 const initialState = {
 recipes: [],
