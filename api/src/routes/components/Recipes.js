@@ -10,23 +10,28 @@ const { Op } = require ("sequelize");
 require('dotenv').config();
 const {APP_API_KEY} = process.env;
 
-
-
 //Endpoint de prueba para ver si funca la pagina:
 // router.get("/", (req,res) => {
 //     res.send("Hola Mundo")
 // })
 router.get("/", async (req,res) => {
-    try{
+    //Evaluo si me llega algo por query y en caso de que si, si me coincide el name con algo de la api o mi db.
+    if (req.query.name){
         const {name} = req.query
-        // console.log(name)
-        //ApiRes contiene los datos de la Api
-        let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true`);
-        // let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&titleMatch=${name}&&addRecipeInformation=true&number=100`)
-        //Deberia buscar asi como estoy buscando??
-        let ApiRes = await response.json();
+        try{
+            //Consulta a la Api
+            let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&titleMatch=${name}&&addRecipeInformation=true&number=100`)
+            let ApiRes = await response.json();
 
-        //mapeo para devolver los datos que se necesitan
+            //Consulta a mi DB
+            let LocalRes = await Recipe.findAll({
+                where:{
+                    title: {
+                        [Op.eq]: name
+                    }
+                }
+            })
+            //mapeo para devolver los datos que se necesitan
         ApiRes = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions, image, diets}) => ({
             id,
             title,
@@ -38,28 +43,40 @@ router.get("/", async (req,res) => {
             diets
 
         }));
-        // console.log(ApiRes)
-        let LocalRes = await Recipe.findAll()
-        //Evaluo si me llega algo por query y en caso de que si, si me coincide el name con algo de la api o mi db.
-        if (name){
-            // console.log(ApiRes)
-            let ArrNameAPI = ApiRes.filter(receta => receta.title.includes(name));
-            let ArrNameDB = LocalRes.filter(receta => receta.title.includes(name));
-            // console.log(ArrNameAPI)
-            if (!ArrNameAPI.length && !ArrNameDB.length){
+            res.status(200).send([...ApiRes, ...LocalRes]);
+        }
+        catch(error){
                 res.status(404).send("No se ha encontrado dicha receta")
             }
-            else {
-                res.status(200).json([...ArrNameAPI, ...ArrNameDB])
-            }
-        }
-        else {
-            res.status(200).json([...ApiRes, ...LocalRes])
-        }
+    } else {
+        try{
+            //ApiRes contiene los datos de la Api
+            let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=5`);
+            // let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=100`);
+            let ApiRes = await response.json();
+            
+            //mapeo para devolver los datos que se necesitan
+            console.log("ApiRes", ApiRes)
+            ApiRes = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions, image, diets}) => ({
+                id,
+                title,
+                summary,
+                spoonacularScore,
+                healthScore,
+                analyzedInstructions,
+                image,
+                diets
+                
+            }));
+            
+            // console.log(ApiRes)
+        let LocalRes = await Recipe.findAll()
+        res.status(200).json([...ApiRes, ...LocalRes])
     }
     catch(err){
         return res.send(err);
     }
+}
 });
 
 router.get("/:id", async (req,res) => {
