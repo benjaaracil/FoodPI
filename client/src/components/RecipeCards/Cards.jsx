@@ -20,7 +20,7 @@ React.useEffect(() => {
 
 if (allCards && allCards.recipes.length){
 return (
-          <div>
+          <div className = "Cards">
               {
                   allCards.recipes.map(p => {
                       return (
@@ -34,14 +34,11 @@ return (
                       )
                   })
               }
-              <form>
-                <input TYPE="button" onClick={ () => window.location.reload()} VALUE="Refresh"/>
-              </form>
           </div>
         );
     }
 else return (
-    <div>
+    <div className="Cards">
         <h2>Cargando...</h2>
     </div>
 )

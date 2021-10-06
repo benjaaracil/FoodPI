@@ -3,7 +3,7 @@ import "./Card.css"
 
 export default function Card ({img, name, diets}) {
     return (
-           <div>
+           <div className = "Card">
             <img src= {img}/>
             <p>
                 {name}

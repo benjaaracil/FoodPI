@@ -1,0 +1,13 @@
+.Nav{
+    width: 100%;
+    height: 100px;
+    background-color: RGB(73, 17 , 2);
+    display: flex;
+    flex-direction:row;
+    place-items: bottom;
+    position:fixed;
+    /* top: 0px; */
+}
+.img{
+    cursor: pointer;
+}

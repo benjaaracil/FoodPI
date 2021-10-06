@@ -1,17 +1,15 @@
 import React from "react";
-import SearchBar from "../SearchBar/SearchBar"
+// import SearchBar from "../SearchBar/SearchBar" Dentro de NavBar pongo mi SearchBar
 import Cards from "../RecipeCards/Cards";
 import "./Home.css";
+import NavBar from "../NavBar/NavBar";
 
 function Home() {
      return (
-        <div>
-            <SearchBar/>
+        <div className = "home">
+            <NavBar/>            
             <Cards/>
-            
-        
-        
-        
+    
         </div>
     )
  }
