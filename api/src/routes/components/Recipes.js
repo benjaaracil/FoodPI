@@ -3,7 +3,7 @@ const router = express.Router();
 //Me traigo Fetch
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 //Me traigo las tablas de la DB
-const {Recipe} = require("../../db.js");
+const {Recipe, Diet} = require("../../db.js");
 //Me traigo los operadores de sequelize
 const { Op } = require ("sequelize");
 //Me traigo la Api Key
@@ -91,10 +91,32 @@ router.get("/:id", async (req,res) => {
                     id: {
                         [Op.eq]: id
                     }
+                },
+                include: {
+                    model: Diet
                 }
             })
             //Si lo encontró, lo envío
             if (LocalRes){
+                //Normalizando Diets para poder mostrar los detalles en el front
+
+                let arreglo = [];
+                // console.log("LocalRes", LocalRes)
+                let Rec = LocalRes.dataValues.diets;
+                console.log(Rec)
+                Rec.forEach(Diet => {
+                   arreglo.push(Diet.dataValues.name)
+                })
+                console.log("Arreglo", arreglo)
+
+                delete LocalRes.dataValues.createdAt
+                delete LocalRes.dataValues.updatedAt
+                delete LocalRes.dataValues.diets
+
+                LocalRes.dataValues.dieta = arreglo;
+                // Object.defineProperty(LocalRes.dataValues, diets,  )
+                console.log("LocalRes", LocalRes)
+
                 res.status(200).json(LocalRes);
             }
         }
