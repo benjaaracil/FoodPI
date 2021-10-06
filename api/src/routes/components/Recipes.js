@@ -86,7 +86,7 @@ router.get("/:id", async (req,res) => {
         //Acá me pregunto si el id tiene 36 caracteres(lo que seria equivalente a un UUID)
         if (id.length === 36){
             //Si es asi, lo busco en mi tabla
-            let LocalRes = await Recipe.findAll({
+            let LocalRes = await Recipe.findOne({
                 where:{
                     id: {
                         [Op.eq]: id
@@ -94,7 +94,7 @@ router.get("/:id", async (req,res) => {
                 }
             })
             //Si lo encontró, lo envío
-            if (LocalRes.length > 0){
+            if (LocalRes){
                 res.status(200).json(LocalRes);
             }
         }
