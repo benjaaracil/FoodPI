@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipesID } from "../../actions";
+import ImagenRecetaDB from "../../img/ImagenRecetaDB.jpg";
 
 export default function Detail (props){
     const dispatch = useDispatch();
@@ -22,9 +23,9 @@ export default function Detail (props){
     return (
         <div>
             <h1>{rec.recipe.title}</h1>
-            <img src={rec.recipe.image}/> 
+            <img src={rec.recipe.image? rec.recipe.image : ImagenRecetaDB}/> 
             <ul>
-                <li>Dieta: {rec.recipe.diets}</li>
+                <li>Dieta: {rec.recipe.diets? rec.recipe.diets : rec.recipe.dieta}</li>
                 <li>Spoonacular Score: {rec.recipe.spoonacularScore}</li>
                 <li>Health Score: {rec.recipe.healthScore}</li>
                 <li>Tipo de Plato: {rec.recipe.dishTypes}</li>
