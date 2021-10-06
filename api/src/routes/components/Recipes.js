@@ -1,5 +1,7 @@
 const express = require ("express");
 const router = express.Router();
+//Me traigo las funciones que se encargan de cierta lógica "compleja"
+const {mapping, normalization, filter} = require ("./Logic Functions/Functions")
 //Me traigo Fetch
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 //Me traigo las tablas de la DB
@@ -31,22 +33,18 @@ router.get("/", async (req,res) => {
                     }
                 }
             })
-            //mapeo para devolver los datos que se necesitan
-        ApiRes = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions, image, diets}) => ({
-            id,
-            title,
-            summary,
-            spoonacularScore,
-            healthScore,
-            analyzedInstructions,
-            image,
-            diets
+            //mapeo para devolver los datos que se necesitan MODIFICAR EL IF PAAA
+            ApiRes = mapping(ApiRes);
+            // if (ApiRes.title !== undefined || LocalRes.id !== undefined){
+                res.status(200).send([...ApiRes, ...LocalRes]);
+            // }
+            // else {
+            //     res.status(404).send("No se ha encontrado dicha receta")
+            // }
 
-        }));
-            res.status(200).send([...ApiRes, ...LocalRes]);
         }
         catch(error){
-                res.status(404).send("No se ha encontrado dicha receta")
+                res.status(404).send(error)
             }
     } else {
         try{
@@ -56,18 +54,7 @@ router.get("/", async (req,res) => {
             let ApiRes = await response.json();
             
             //mapeo para devolver los datos que se necesitan
-            console.log("ApiRes", ApiRes)
-            ApiRes = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions, image, diets}) => ({
-                id,
-                title,
-                summary,
-                spoonacularScore,
-                healthScore,
-                analyzedInstructions,
-                image,
-                diets
-                
-            }));
+            ApiRes = mapping(ApiRes);
             
             // console.log(ApiRes)
         let LocalRes = await Recipe.findAll()
@@ -81,7 +68,6 @@ router.get("/", async (req,res) => {
 
 router.get("/:id", async (req,res) => {
     let {id} = req.params
-    // console.log(id)
     try{
         //Acá me pregunto si el id tiene 36 caracteres(lo que seria equivalente a un UUID)
         if (id.length === 36){
@@ -98,26 +84,11 @@ router.get("/:id", async (req,res) => {
             })
             //Si lo encontró, lo envío
             if (LocalRes){
-                //Normalizando Diets para poder mostrar los detalles en el front
-
-                let arreglo = [];
-                // console.log("LocalRes", LocalRes)
-                let Rec = LocalRes.dataValues.diets;
-                console.log(Rec)
-                Rec.forEach(Diet => {
-                   arreglo.push(Diet.dataValues.name)
-                })
-                console.log("Arreglo", arreglo)
-
-                delete LocalRes.dataValues.createdAt
-                delete LocalRes.dataValues.updatedAt
-                delete LocalRes.dataValues.diets
-
-                LocalRes.dataValues.dieta = arreglo;
-                // Object.defineProperty(LocalRes.dataValues, diets,  )
-                console.log("LocalRes", LocalRes)
-
-                res.status(200).json(LocalRes);
+                //Normalizacion Diets para poder mostrar los detalles en el front hecha en la funcion
+                res.status(200).json(normalization(LocalRes));
+            }
+            else {
+                res.status(404).send("Detalle no disponible en la DB")
             }
         }
         //Si el id tuviese otro length, lo busco en la Api...
@@ -125,25 +96,14 @@ router.get("/:id", async (req,res) => {
             //ApiRes contiene los datos de la Api
             let response = await fetch(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${APP_API_KEY}`);
             let ApiRes = await response.json();
-            // console.log(ApiRes)
-
             //filtro para devolver los datos que se necesitan
-            let ApiRespuesta = {
-                id: ApiRes.id, 
-                title: ApiRes.title, 
-                summary: ApiRes.summary, 
-                spoonacularScore: ApiRes.spoonacularScore, 
-                healthScore: ApiRes.healthScore, 
-                analyzedInstructions: ApiRes.analyzedInstructions,
-                diets: ApiRes.diets,
-                image: ApiRes.image,
-                dishTypes: ApiRes.dishTypes
-            }
-            // console.log(ApiRespuesta)
-            // console.log(LocalRes)
-            //Si encontró algo, lo devuelvo
-            if (ApiRespuesta){
+            let ApiRespuesta = filter(ApiRes);
+            //Si encontró algo, pregunto si en verdad es un dato válido o es undefined
+            if (ApiRespuesta.id !== undefined){
                 res.status(200).json(ApiRespuesta);
+            }
+            else {
+                res.status(404).send("Detalle no disponible en la API")
             }
         }//Caso contrario, si no encontró el id en la db o en la api, me retorna el 404
         else {
