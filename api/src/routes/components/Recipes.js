@@ -105,7 +105,7 @@ router.get("/:id", async (req,res) => {
             let ApiRes = await response.json();
             // console.log(ApiRes)
 
-            //mapeo para devolver los datos que se necesitan
+            //filtro para devolver los datos que se necesitan
             let ApiRespuesta = {
                 id: ApiRes.id, 
                 title: ApiRes.title, 
