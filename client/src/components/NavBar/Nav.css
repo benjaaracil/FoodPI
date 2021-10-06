@@ -11,3 +11,11 @@
 .img{
     cursor: pointer;
 }
+.LinkCreateRecipe{
+    text-decoration: none;
+    color: white;
+    font-family: 'Bebas Neue', cursive;
+    margin-top: 31px;
+    font-size: 35px;
+    margin-left: 100px;
+}

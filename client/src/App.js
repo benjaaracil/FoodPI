@@ -16,10 +16,10 @@ function App() {
       exact path='/home' component = {Home}
       />
       <Route
-      path = '/home/:id' component = {Detail}
+      exact path = '/home/:id' component = {Detail}
       />
       <Route
-      exact path = '/home/create' component = {Create}
+      exact path = '/create' component = {Create}
       />
     </div>
   );

@@ -9,7 +9,7 @@ function Home() {
         <div className = "home">
             <NavBar/>            
             <Cards/>
-    
+            
         </div>
     )
  }

@@ -32,6 +32,7 @@
 }
 .Link:hover{
 opacity: 85%;
+transition: .2s;
 }
 .Content{
   position: absolute;

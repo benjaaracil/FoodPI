@@ -49,7 +49,7 @@ export function getRecipesID (id){
         }
     }
 }
-export function postRecipes (title, summary, spoonacularScore, healthScore, analyzedInstructions){
+export function postRecipes (title, summary, spoonacularScore, healthScore, analyzedInstructions, dietName){
     return async function (dispatch){
         try{
             var json = await (await axios.get(`http://localhost:3001/post`)).data
