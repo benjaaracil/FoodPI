@@ -10,7 +10,6 @@ export default function Cards () {
 const allCards = useSelector((state) => state);
 const dispatch = useDispatch();
 
-// console.log(allCards);
 
 React.useEffect(() => {
     (async () => {
@@ -19,12 +18,13 @@ React.useEffect(() => {
   },[])
 
 if (allCards && allCards.recipes.length){
+    // console.log(allCards.recipes);
 return (
           <div className = "Cards">
               {
                   allCards.recipes.map(p => {
                       return (
-                          <Link to = {`/home/${p.id}`}>
+                          <Link to = {`/home/${p.id}`} className = "link">
                             <Card
                                 img = {p.image}
                                 name = {p.title}

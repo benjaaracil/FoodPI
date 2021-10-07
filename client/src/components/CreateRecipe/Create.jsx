@@ -4,6 +4,19 @@ import { postRecipes } from "../../actions";
 import "./Create.css"
 
 export default function Create(){
+const Diets = [
+        'gluten free',
+        'ketogenic',
+        'vegetarian',
+        'lacto ovo vegetarian',
+        'vegan',
+        'pescatarian',
+        'paleolithic',
+        'primal',
+        'whole 30',
+        'fodmap friendly',
+        'dairy free',
+        ]
 const dispatch = useDispatch();
 
 function handleSubmit(){
@@ -28,8 +41,10 @@ function handleSubmit(){
             <input></input>
 
             {/* Me faltaria agregar para seleccionar dietas */}
-
-            <button>Create Recipe</button>
+            {/* <input type="checkbox" id="dieta" name="dieta" value="dieta"/>
+            <label for={dieta}> dieta </label>
+            
+            <button>Create Recipe</button> */}
         </form>
     )
 }

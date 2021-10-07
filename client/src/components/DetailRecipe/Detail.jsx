@@ -14,7 +14,7 @@ export default function Detail (props){
         })()
       },[])
 
-      console.log(rec);
+      
     // console.log(Object.keys(rec).length)
     
     if (rec){
@@ -22,16 +22,16 @@ export default function Detail (props){
 
     return (
         <div>
-            <h1>{rec.recipe.title}</h1>
+            {Array.isArray(rec.recipe)? <h1>{rec.recipe[0].title}</h1>: <h1>{rec.recipe.title}</h1>}
             <img src={rec.recipe.image? rec.recipe.image : ImagenRecetaDB}/> 
             <ul>
-                <li>Dieta: {rec.recipe.diets? rec.recipe.diets : rec.recipe.dieta}</li>
-                <li>Spoonacular Score: {rec.recipe.spoonacularScore}</li>
-                <li>Health Score: {rec.recipe.healthScore}</li>
-                <li>Tipo de Plato: {rec.recipe.dishTypes}</li>
+                <li>Dieta: {Array.isArray(rec.recipe)?rec.recipe[0].diets:rec.recipe.diets}</li>
+                <li>Spoonacular Score: {Array.isArray(rec.recipe)?rec.recipe[0].spoonacularScore:rec.recipe.spoonacularScore}</li>
+                <li>Health Score: {Array.isArray(rec.recipe)?rec.recipe[0].healthScore:rec.recipe.healthScore}</li>
+                <li>Tipo de Plato: {rec.recipe.dishTypes? rec.recipe.dishTypes: "Not Available"}</li>
                 {/* <li>{rec.recipe.analyzedInstructions}</li> */}
             </ul>
-            {rec.recipe.summary?.replace(/<[^>]*>?/gm, '')}
+            Summary: {Array.isArray(rec.recipe)?rec.recipe[0].summary:rec.recipe.summary?.replace(/<[^>]*>?/gm, '')}
         </div>
     )
 }

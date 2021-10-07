@@ -7,4 +7,12 @@
     border: 1px solid;
     border-color: black;
     padding: 20px;
+    background-color: RGB(73, 17 , 2);
+    border-radius: 20px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 24px;
+    color: white;
+}
+.Img{
+    width: 350px;
 }
