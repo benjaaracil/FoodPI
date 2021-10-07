@@ -36,11 +36,12 @@ router.get("/", async (req,res) => {
                     model: Diet
                 }
             })
-            console.log(LocalRes)
+            // console.log(LocalRes)
             // console.log(LocalRes.length === 0);
             // console.log(ApiRes.totalResults === 0);
             //mapeo para devolver los datos que se necesitan
             ApiRes = mapping(ApiRes);
+            LocalRes = normalizationWithoutID(LocalRes);
             
             if (ApiRes.length === 0 && LocalRes.length === 0){
                 return res.status(404).send("No se ha encontrado dicha receta")
