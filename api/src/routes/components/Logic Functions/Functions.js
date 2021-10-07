@@ -1,4 +1,5 @@
 function mapping (ApiRes){
+// console.log(ApiRes)
    ApiResultado = ApiRes.results.map(({id, title, summary, spoonacularScore, healthScore, analyzedInstructions, image, diets}) => ({
         id,
         title,
@@ -10,23 +11,22 @@ function mapping (ApiRes){
         diets
 
     }));
+    // console.log(ApiResultado)
     return ApiResultado;
 }
 
-function normalization (LocalRes){
-    let arregloDietas = [];
-    let Rec = LocalRes.dataValues.diets;
-    Rec.forEach(Diet => {
-        arregloDietas.push(Diet.dataValues.name)
-    });
-    //Elimino las props que no me interesan recibir
-    delete LocalRes.dataValues.createdAt;
-    delete LocalRes.dataValues.updatedAt;
-    delete LocalRes.dataValues.diets;
+function normalizationWithoutID (LocalRes){
+    // console.log(LocalRes)
+    let arregloDietas = [...LocalRes.map(r => {
+        return r.toJSON()
+    })];
+    // console.log(arregloDietas)
+    
+    for (let i = 0; i < arregloDietas.length; i++) {
+        arregloDietas[i].diets = arregloDietas[i].diets.map(d => d.name)
+    }
     //Seteo en la prop "dieta" los tipos de dieta
-    LocalRes.dataValues.dieta = arregloDietas;
-    console.log(LocalRes)
-    return LocalRes;
+    return arregloDietas;
 }
 
 function filter (ApiRes){
@@ -46,6 +46,6 @@ function filter (ApiRes){
 
 module.exports = {
     mapping,
-    normalization,
+    normalizationWithoutID,
     filter
 }

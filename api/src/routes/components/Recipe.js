@@ -22,8 +22,8 @@ router.post("/", async (req,res) => {
                 name: dietName
             }
         })
-        console.log(recipe);
-        console.log(dieta)
+        // console.log(recipe);
+        // console.log(dieta)
         //Genero la relación entre tablas
         recipe.addDiet(dieta);
         res.status(200).json(recipe);

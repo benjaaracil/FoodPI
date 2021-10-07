@@ -1,7 +1,7 @@
 const express = require ("express");
 const router = express.Router();
 //Me traigo las funciones que se encargan de cierta lógica "compleja"
-const {mapping, normalization, filter} = require ("./Logic Functions/Functions")
+const {mapping, filter, normalizationWithoutID} = require ("./Logic Functions/Functions")
 //Me traigo Fetch
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 //Me traigo las tablas de la DB
@@ -31,16 +31,23 @@ router.get("/", async (req,res) => {
                     title: {
                         [Op.eq]: name
                     }
+                },
+                include: {
+                    model: Diet
                 }
             })
-            //mapeo para devolver los datos que se necesitan MODIFICAR EL IF PAAA
+            console.log(LocalRes)
+            // console.log(LocalRes.length === 0);
+            // console.log(ApiRes.totalResults === 0);
+            //mapeo para devolver los datos que se necesitan
             ApiRes = mapping(ApiRes);
-            // if (ApiRes.title !== undefined || LocalRes.id !== undefined){
-                res.status(200).send([...ApiRes, ...LocalRes]);
-            // }
-            // else {
-            //     res.status(404).send("No se ha encontrado dicha receta")
-            // }
+            
+            if (ApiRes.length === 0 && LocalRes.length === 0){
+                return res.status(404).send("No se ha encontrado dicha receta")
+            }
+            else {
+                res.status(200).json([...ApiRes, ...LocalRes]);
+            }
 
         }
         catch(error){
@@ -55,9 +62,21 @@ router.get("/", async (req,res) => {
             
             //mapeo para devolver los datos que se necesitan
             ApiRes = mapping(ApiRes);
-            
             // console.log(ApiRes)
-        let LocalRes = await Recipe.findAll()
+        let LocalRes = await Recipe.findAll({
+            include: [{
+                model: Diet,
+                attributes: ["name"],
+                through: {
+                    attributes: []
+                }
+            }]
+        })
+        LocalRes = normalizationWithoutID(LocalRes)
+        // console.log(LocalRes)
+        
+        
+        
         res.status(200).json([...ApiRes, ...LocalRes])
     }
     catch(err){
@@ -72,20 +91,22 @@ router.get("/:id", async (req,res) => {
         //Acá me pregunto si el id tiene 36 caracteres(lo que seria equivalente a un UUID)
         if (id.length === 36){
             //Si es asi, lo busco en mi tabla
-            let LocalRes = await Recipe.findOne({
+            let LocalRes = await Recipe.findAll({
                 where:{
                     id: {
                         [Op.eq]: id
                     }
                 },
-                include: {
+                include: [{
                     model: Diet
-                }
+                }]
             })
             //Si lo encontró, lo envío
-            if (LocalRes){
+            if (LocalRes.hasOwnProperty("id") !== undefined){
                 //Normalizacion Diets para poder mostrar los detalles en el front hecha en la funcion
-                res.status(200).json(normalization(LocalRes));
+                let Rec = normalizationWithoutID(LocalRes);
+                res.status(200).json(Rec);
+                // res.status(200).json(LocalRes);
             }
             else {
                 res.status(404).send("Detalle no disponible en la DB")
