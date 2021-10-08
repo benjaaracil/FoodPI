@@ -1,5 +1,6 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
+import { useState } from 'react';
 import { getRecipes } from '../../actions';
 import "./Cards.css"
 import Card from '../RecipeCard/Card';
@@ -9,20 +10,49 @@ import { Link } from 'react-router-dom';
 export default function Cards () {
 const allCards = useSelector((state) => state);
 const dispatch = useDispatch();
+//Estado para el paginado
+const [current, setCurrent] = useState(0)
 
 
 React.useEffect(() => {
     (async () => {
+        //Si hago una nueva busqueda se posiciona de nuevo en la primer pag:
+        setCurrent(0)
+        //
         dispatch(await getRecipes())
     })()
   },[])
 
+  const lastPage = () => {
+    if(current > 0){
+      setCurrent( current - 9)
+    }
+  }
+   const nextPage = () => {
+    if(current < allCards.recipes.length - 9){
+      setCurrent( current + 9)
+    }
+  }
+
 if (allCards && allCards.recipes.length){
-    // console.log(allCards.recipes);
+    //Paginado
+    let recipesToShow;
+    recipesToShow = allCards.recipes.slice(current, current + 9)
+
+
 return (
-          <div className = "Cards">
+        <div>
+            <div className = "Cards">
+                <div className = "Botonera">
+                    <button onClick={lastPage}>
+                        Atras
+                    </button>
+                    <button onClick={nextPage}>
+                        Adelante
+                    </button>
+                </div>
               {
-                  allCards.recipes.map(p => {
+                  recipesToShow.map(p => {
                       return (
                           <Link to = {`/home/${p.id}`} className = "link">
                             <Card
@@ -35,10 +65,11 @@ return (
                   })
               }
           </div>
+        </div>
         );
     }
 else return (
-    <div className="Cards">
+    <div className = "Cargando">
         <h2>Cargando...</h2>
     </div>
 )

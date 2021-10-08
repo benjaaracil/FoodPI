@@ -8,11 +8,26 @@
     border-color: black;
     padding: 20px;
     background-color: RGB(73, 17 , 2);
-    border-radius: 20px;
+    /* background-image: url("../../img/FondoHome.jpg"); */
+    border-radius: 10px;
     font-family: 'Bebas Neue', cursive;
     font-size: 24px;
     color: white;
 }
 .Img{
-    width: 350px;
+    /* width: 350px; */
+    width: 80%;
+    border-radius: 5px;
+    border: black;
+}
+.TitleCard{
+    font-size: 30px;
+    text-align: center;
+    margin-top: 5px;
+    text-decoration: underline;
+}
+.DietDetail{
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
 }

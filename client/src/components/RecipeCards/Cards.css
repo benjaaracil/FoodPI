@@ -5,9 +5,23 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
-    margin-top: 7%;
+    margin-top: 116px;
+    background-image: url("../../img/FondoHome.jpg");
+    background-position: right;
 }
 .link{
     text-decoration: none;
+    /* margin-top: 10px; */
     /* padding: 10px; */
+}
+.Cargando{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 150px;
+    color: black;
+}
+.Botonera {
+    
 }
