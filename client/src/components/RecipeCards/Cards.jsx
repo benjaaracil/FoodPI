@@ -1,11 +1,10 @@
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux'
 import { useState } from 'react';
-import { getRecipes, getDiets } from '../../actions';
+import { getRecipes } from '../../actions';
 import "./Cards.css"
 import Card from '../RecipeCard/Card';
 import { Link } from 'react-router-dom';
-
 
 export default function Cards () {
 const allCards = useSelector((state) => state);
@@ -13,14 +12,6 @@ const dispatch = useDispatch();
 // const [orden, setOrden] = useState();
 
 //Me traigo las dietas-------------------------------
-const dietas = useSelector(state => state.diets);
-
-
-React.useEffect(() => {
-    (async () => {
-        dispatch(await getDiets())
-    })()
-  },[])
 //Me traigo las dietas--------------------------------------
 
 //PAGINADO------------------------------------------------------------------------------
@@ -80,22 +71,6 @@ return (
                     <button onClick={nextPage}>
                         Adelante
                     </button>
-                </div>
-                <div>
-                    <select name="A-Z/Z-A">
-                        <option value="ASC">A-Z</option>
-                        <option value="DESC">Z-A</option>
-                    </select>
-                    <select name="Score">
-                        <option value="0-25">0-25</option>
-                        <option value="25-50">25-50</option>
-                        <option value="50-100">50-100</option>
-                    </select>
-                    <select name="Dietas">
-                    {dietas.map(d => 
-                        <option value = {d.name}>{d.name}</option>
-                    )}
-                    </select>
                 </div>
               {
                   recipesToShow.map(p => {

@@ -47,5 +47,5 @@ export default function Detail (props){
         </div>
     )
 }
-else return (<div>f en el chat</div>)
+else return (<div>Cargando...</div>)
 }

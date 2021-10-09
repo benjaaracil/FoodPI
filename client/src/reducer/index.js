@@ -1,7 +1,8 @@
-import {GetRecipes, GetRecipesID, PostRecipes, GetDiets } from "../actions";
+import {GetRecipes, GetRecipesID, PostRecipes, GetDiets, FilterByAlphabetic } from "../actions";
 
 const initialState = {
 recipes: [],
+recipesCopy: [],
 recipe: {},
 diets: [],
 }
@@ -10,7 +11,8 @@ function rootReducer (state = initialState, {type, payload}){
         case GetRecipes:
             return{
                 ...state,
-                recipes: payload
+                recipes: payload,
+                recipesCopy: payload
             }
         case GetRecipesID:{
             return {
@@ -27,6 +29,36 @@ function rootReducer (state = initialState, {type, payload}){
             return {
                 ...state,
                 diets: payload
+            }
+        }
+        case FilterByAlphabetic: {
+            if (payload === "ASC"){
+                return {
+                    ...state,
+                    recipes: state.recipesCopy.sort(function (a, b) {
+                            if (a.title > b.title) {
+                              return 1;
+                            }
+                            if (a.title < b.title) {
+                              return -1;
+                            }
+                            return 0
+                        })
+                }
+            }
+            else {
+                return {
+                    ...state,
+                    recipes: state.recipesCopy.sort(function (a, b) {
+                            if (a.title < b.title) {
+                              return 1;
+                            }
+                            if (a.title > b.title) {
+                              return -1;
+                            }
+                            return 0
+                        })
+                }
             }
         }
         default: return initialState
