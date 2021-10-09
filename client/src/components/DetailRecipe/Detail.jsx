@@ -21,7 +21,6 @@ export default function Detail (props){
     
     if (rec){
         // let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
-
     return (
         <div className = "DetailCss">
             <NavBar/>
@@ -29,7 +28,7 @@ export default function Detail (props){
                 {Array.isArray(rec.recipe)? <h1 className = "Title">{rec.recipe[0].title}</h1>: <h1 className = "Title">{rec.recipe.title}</h1>}
                 <img className = "ImageRecipe"src={rec.recipe.image? rec.recipe.image : ImagenRecetaDB}/> 
                 <ul className = "Tips">
-                    <li>Diet: {Array.isArray(rec.recipe)?rec.recipe[0].diets.toString():rec.recipe.diets.toString()}</li>
+                    <li>Diet: {Array.isArray(rec.recipe)?rec.recipe[0].diets.join(", "):rec.recipe.diets}</li>
                     <li>Score: {Array.isArray(rec.recipe)?rec.recipe[0].spoonacularScore:rec.recipe.spoonacularScore}</li>
                     <li>Health Score: {Array.isArray(rec.recipe)?rec.recipe[0].healthScore:rec.recipe.healthScore}</li>
                     <li>Tipo de Plato: {rec.recipe.dishTypes? rec.recipe.dishTypes: "Not Available"}</li>

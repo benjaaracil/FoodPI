@@ -1,50 +1,93 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { postRecipes } from "../../actions";
+import { getDiets } from "../../actions";
 import "./Create.css"
 
 export default function Create(){
-const Diets = [
-        'gluten free',
-        'ketogenic',
-        'vegetarian',
-        'lacto ovo vegetarian',
-        'vegan',
-        'pescatarian',
-        'paleolithic',
-        'primal',
-        'whole 30',
-        'fodmap friendly',
-        'dairy free',
-        ]
 const dispatch = useDispatch();
+const dietas = useSelector(state => state.diets);
 
-function handleSubmit(){
-    dispatch(postRecipes());
+
+React.useEffect(() => {
+    (async () => {
+        dispatch(await getDiets())
+    })()
+  },[])
+
+// console.log(dietas)
+
+
+const [input, setInput] = React.useState({
+    title: '',
+    summary: '',
+    spoonacularScore:0,
+    healthScore:0,
+    analyzedInstructions:'',
+    dietName:[]
+  })
+//   console.log(input)
+
+function handleSubmit(e){
+    e.preventDefault();
+    postRecipes(input);
 }
 
+function handleChange(e){
+    setInput({
+        ...input,
+        [e.target.name] : e.target.value
+    })
+}
+
+function handleChangeCheck(e){
+    if (e.target.checked === true){
+        setInput({
+            ...input,
+            dietName: [...input.dietName, e.target.name]
+        })
+    }
+    else {
+        setInput({
+            ...input,
+            dietName: input.dietName.filter(dieta => dieta !== e.target.name)
+        })
+    }
+}
+
+
+// onSubmit = {(e) => handleSubmit(e)}
     return (
-        <form onSubmit = {handleSubmit} className="Form">
-            <label>title</label>
-            <input></input>
+        <form onSubmit = {(e) => handleSubmit(e)} className="Form">
+            <div>
+                <label>Title</label>
+                <input type = "text" name = "title" onChange={(e) => handleChange(e)} ></input>
 
-            <label>summary</label>
-            <input></input>
+                <label>Summary</label>
+                <input type = "text" name = "summary" onChange={(e) => handleChange(e)}></input>
 
-            <label>spoonacularScore</label>
-            <input></input>
+                <label>Score</label>
+                <input type = "integer" name = "spoonacularScore" onChange={(e) => handleChange(e)}></input>
 
-            <label>healthScore</label>
-            <input></input>
+                <label>Health Score</label>
+                <input type = "integer" name = "healthScore" onChange={(e) => handleChange(e)}></input>
 
-            <label>analyzedInstructions</label>
-            <input></input>
-
-            {/* Me faltaria agregar para seleccionar dietas */}
-            {/* <input type="checkbox" id="dieta" name="dieta" value="dieta"/>
-            <label for={dieta}> dieta </label>
+                <label>Instructions</label>
+                <input type = "text" name = "analyzedInstructions" onChange={(e) => handleChange(e)}></input>
+            </div>
+            {/* Checkbox dietas */}
+            <div>
+                {/* {console.log("Dietas", dietas)} */}
+                {dietas.map(d => 
+                    <div>
+                        <label>{d.name}</label>
+                        <input type='checkbox' onChange={(e) => handleChangeCheck(e)} name={d.name} id = {d.id}/>
+                    </div>
+                )}
+            </div>
+            {/* // */}
             
-            <button>Create Recipe</button> */}
+            <button type="submit">Create Recipe</button> 
         </form>
     )
 }

@@ -2,6 +2,7 @@ import axios from "axios"
 export const GetRecipes = "GET_RECIPES";
 export const GetRecipesID = "GET_RECIPES_ID";
 export const PostRecipes = "POST_RECIPES_ID";
+export const GetDiets = "GET_DIETS";
 
 export function getRecipes (name){
     return async function (dispatch){
@@ -49,12 +50,20 @@ export function getRecipesID (id){
         }
     }
 }
-export function postRecipes (title, summary, spoonacularScore, healthScore, analyzedInstructions, dietName){
+export async function postRecipes (input){
+        try{
+            await axios.post(`http://localhost:3001/recipe`, input)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+export async function getDiets(){
     return async function (dispatch){
         try{
-            var json = await (await axios.get(`http://localhost:3001/post`)).data
+            var json = await (await axios.get(`http://localhost:3001/types`)).data
             return dispatch ({
-                type: PostRecipes, 
+                type: GetDiets, 
                 payload: json
             })
         }
