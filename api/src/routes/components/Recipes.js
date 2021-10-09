@@ -120,6 +120,16 @@ router.get("/:id", async (req,res) => {
             let ApiRes = await response.json();
             //filtro para devolver los datos que se necesitan
             let ApiRespuesta = filter(ApiRes);
+
+            let pasos = [];
+            ApiRespuesta.analyzedInstructions?ApiRespuesta.analyzedInstructions.steps.forEach(s =>{
+            let paso = {
+                number: s.number,
+                step: s.step
+            }
+            pasos.push(paso)
+            }): null
+            
             //Si encontró algo, pregunto si en verdad es un dato válido o es undefined
             if (ApiRespuesta.id !== undefined){
                 res.status(200).json(ApiRespuesta);

@@ -30,23 +30,13 @@ function normalizationWithoutID (LocalRes){
 }
 
 function filter (ApiRes){
-    let pasos = [];
-    ApiRes.analyzedInstructions[0].steps.forEach(s =>{
-        let paso = {
-            number: s.number,
-            step: s.step
-        }
-        pasos.push(paso)
-    })
-    console.log(pasos)
-    
     let ApiRespuesta = {
         id: ApiRes.id, 
         title: ApiRes.title, 
         summary: ApiRes.summary, 
         spoonacularScore: ApiRes.spoonacularScore, 
         healthScore: ApiRes.healthScore, 
-        analyzedInstructions: pasos,
+        analyzedInstructions: ApiRes.analyzedInstructions? ApiRes.analyzedInstructions[0]: null,
         diets: ApiRes.diets,
         image: ApiRes.image,
         dishTypes: ApiRes.dishTypes
