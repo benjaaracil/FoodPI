@@ -21,6 +21,7 @@ export default function Detail (props){
     
     if (rec){
         // let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
+        console.log(rec.recipe.analyzedInstructions)
     return (
         <div className = "DetailCss">
             <NavBar/>
@@ -31,12 +32,17 @@ export default function Detail (props){
                     <li>Diet: {Array.isArray(rec.recipe)?rec.recipe[0].diets.join(", "):rec.recipe.diets}</li>
                     <li>Score: {Array.isArray(rec.recipe)?rec.recipe[0].spoonacularScore:rec.recipe.spoonacularScore}</li>
                     <li>Health Score: {Array.isArray(rec.recipe)?rec.recipe[0].healthScore:rec.recipe.healthScore}</li>
-                    <li>Tipo de Plato: {rec.recipe.dishTypes? rec.recipe.dishTypes: "Not Available"}</li>
-                    {/* <li>{rec.recipe.analyzedInstructions}</li> */}
+                    <li>Dish type: {rec.recipe.dishTypes? rec.recipe.dishTypes: "Not Available"}</li>
                 </ul>
                 <div className = "Resumen">
                  {Array.isArray(rec.recipe)?rec.recipe[0].summary:rec.recipe.summary?.replace(/<[^>]*>?/gm, '')}
                 </div>
+                <h1 className = "TitleStep">
+                    Step by Step!
+                <ul className = "Pasos">
+                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li> {p.number} : {p.step}</li>) : <li>HOLA</li>}
+                </ul>
+                </h1>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 .DetailCss{
     background-image: url("../../img/FondoHome.jpg");
     background-position: right;
+    overflow: visible
 }
 .Box{
     display: flex;
@@ -18,6 +19,7 @@
     font-size: 20px;
     background-color: black;
     border-radius: 15px;
+    margin-bottom: 15px;
 }
 .Tips{
     font-family: 'Bebas Neue', cursive;
@@ -34,4 +36,22 @@
     background-color: rgba(255, 255, 255, 0.589);
     padding: 10px;
     border-radius: 13px;
+}
+.Pasos{
+    background-color: rgba(0, 0, 0, 0.733);
+    max-width: 80%;
+    padding: 40px;
+    border-radius: 15px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    color: rgb(224, 212, 212);
+}
+.TitleStep{
+    display: flex;
+    text-align: left;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 70px;
+    color: RGB(73, 17 , 2);
 }

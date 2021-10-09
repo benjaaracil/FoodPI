@@ -1,22 +1,11 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { postRecipes } from "../../actions";
-import { getDiets } from "../../actions";
 import "./Create.css"
 
 export default function Create(){
-const dispatch = useDispatch();
+
 const dietas = useSelector(state => state.diets);
-
-
-React.useEffect(() => {
-    (async () => {
-        dispatch(await getDiets())
-    })()
-  },[])
-
-// console.log(dietas)
-
 
 const [input, setInput] = React.useState({
     title: '',

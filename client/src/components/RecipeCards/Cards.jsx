@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 export default function Cards () {
 const allCards = useSelector((state) => state);
 const dispatch = useDispatch();
-const [orden, setOrden] = useState();
+// const [orden, setOrden] = useState();
 
 //Me traigo las dietas-------------------------------
 const dietas = useSelector(state => state.diets);
@@ -56,26 +56,16 @@ if (allCards && allCards.recipes.length){
 //PAGINADO------------------------------------------------------------------------------
 
 //Hago el ordenado alfabético-----------------------
-// console.log("Sin Ordenar", allCards)
-console.log("Sin Ordenado", allCards.recipes)
 
-function handleChangeSelect(e){
-    console.log(e.target.value)
-    if (e.target.value === "ASC"){
-            allCards.recipes.sort(function (a, b) {
-            if (a.title > b.title) {
-              return 1;
-            }
-            if (a.title < b.title) {
-              return -1;
-            }
-            return 0
-        })
-        setOrden(allCards.recipes)
-    }
-}
-
-console.log("Ordenado", allCards.recipes)
+// allCards.recipes.sort(function (a, b) {
+//     if (a.title < b.title) {
+//       return 1;
+//     }
+//     if (a.title > b.title) {
+//       return -1;
+//     }
+//     return 0
+// })
 
 
 //Hago el ordenado alfabético------------------------
@@ -92,7 +82,7 @@ return (
                     </button>
                 </div>
                 <div>
-                    <select name="A-Z/Z-A" onChange = {handleChangeSelect}>
+                    <select name="A-Z/Z-A">
                         <option value="ASC">A-Z</option>
                         <option value="DESC">Z-A</option>
                     </select>

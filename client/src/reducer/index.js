@@ -3,7 +3,7 @@ import {GetRecipes, GetRecipesID, PostRecipes, GetDiets } from "../actions";
 const initialState = {
 recipes: [],
 recipe: {},
-diets: []
+diets: [],
 }
 function rootReducer (state = initialState, {type, payload}){
     switch (type){
