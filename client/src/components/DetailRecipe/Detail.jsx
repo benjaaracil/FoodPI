@@ -21,7 +21,7 @@ export default function Detail (props){
     
     if (rec){
         // let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
-        console.log(rec.recipe.analyzedInstructions);
+        // console.log(rec.recipe[0].analyzedInstructions);
         let num = 1;
     return (
         <div className = "DetailCss">
@@ -41,8 +41,10 @@ export default function Detail (props){
                 <h1 className = "TitleStep">
                     Step by Step!
                 <ul className = "Pasos">
-                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li> {num++}:{p.step}</li>) : <li>{num++}:{rec.recipe.analyzedInstructions}</li>}
+                    {Array.isArray(rec.recipe)? rec.recipe[0].analyzedInstructions : "Not Available"}
+                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li> {num++}:{p.step}</li>) : null }
                 </ul>
+
                 </h1>
             </div>
         </div>
