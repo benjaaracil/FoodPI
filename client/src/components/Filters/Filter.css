@@ -1,0 +1,22 @@
+.Filter{
+    padding-left: 35%;
+    padding-top: 30px;
+}
+.Letter{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    padding: 5px;
+    width: 150px;
+}
+.Score{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    padding: 5px;
+    width: 150px;
+}
+.Diet{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 20px;
+    padding: 5px;
+    width: 150px;
+}

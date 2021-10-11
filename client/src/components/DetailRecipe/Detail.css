@@ -1,14 +1,9 @@
-.DetailCss{
-    background-image: url("../../img/FondoHome.jpg");
-    background-position: right;
-    overflow: visible
-}
 .Box{
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 150px;
-    height: 84VH;
+    /* height: 100%; */
 }
 .Resumen{
     max-width: 70%;

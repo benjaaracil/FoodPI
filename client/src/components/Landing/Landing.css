@@ -26,13 +26,14 @@
   color: black;
   opacity: 70%;
   font-size: 320px;
+  transition:all .5s ease-in-out;
   /* border: 1px solid; */
   /* border-color: RGB(100, 83 , 50);
   background-color: RGB(100, 83 , 50); */
 }
 .Link:hover{
 opacity: 85%;
-transition: .2s;
+/* transition:all .5s ease-in-out; */
 }
 .Content{
   position: absolute;

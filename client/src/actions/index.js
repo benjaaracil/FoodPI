@@ -4,6 +4,8 @@ export const GetRecipesID = "GET_RECIPES_ID";
 export const PostRecipes = "POST_RECIPES_ID";
 export const GetDiets = "GET_DIETS";
 export const FilterByAlphabetic = "FILTER_BY_ALPHABETIC";
+export const FilterByScore = "FILTER_BY_SCORE";
+export const FilterByDiet = "FILTER_BY_DIET"
 
 export function getRecipes (name){
     return async function (dispatch){
@@ -77,5 +79,17 @@ export function filterByAlphabetic(Order){
     return {
         type: FilterByAlphabetic,
         payload: Order
+    }
+}
+export function filterByScore(Order){
+    return {
+        type: FilterByScore,
+        payload: Order
+    }
+}
+export function filterByDiet(Diet){
+    return {
+        type: FilterByDiet,
+        payload: Diet
     }
 }

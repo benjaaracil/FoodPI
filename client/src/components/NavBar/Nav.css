@@ -6,12 +6,19 @@
     flex-direction:row;
     place-items: bottom;
     position:fixed;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+    border-bottom: 2px solid RGB(36, 26 , 17);
+    border-left: 3px solid RGB(36, 26 , 17);
+    border-right: 3px solid RGB(36, 26 , 17);
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
     /* top: 0px; */
 }
 .img{
     cursor: pointer;
+    transition:all .5s ease-in-out;
+}
+.img:hover {
+    filter: grayscale(80%);
 }
 .LinkCreateRecipe{
     text-decoration: none;
@@ -20,4 +27,8 @@
     margin-top: 31px;
     font-size: 35px;
     margin-left: 100px;
+    transition:all .5s ease-in-out;
+}
+.LinkCreateRecipe:hover{
+    color: rgba(255, 255, 255, 0.603)
 }

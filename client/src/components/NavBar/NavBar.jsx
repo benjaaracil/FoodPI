@@ -7,7 +7,6 @@ import "./Nav.css";
 
 
 export default function NavBar(){
-
 return (
     <div className = "Nav">
         <img src={Icon} className = "img" onClick={ () => window.location.href="/home"}/>

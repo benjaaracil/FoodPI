@@ -1,4 +1,4 @@
-import {GetRecipes, GetRecipesID, PostRecipes, GetDiets, FilterByAlphabetic } from "../actions";
+import {GetRecipes, GetRecipesID, PostRecipes, GetDiets, FilterByAlphabetic, FilterByScore, FilterByDiet } from "../actions";
 
 const initialState = {
 recipes: [],
@@ -60,6 +60,43 @@ function rootReducer (state = initialState, {type, payload}){
                         })
                 }
             }
+        }
+        case FilterByScore: {
+            if (payload === "MaxMin"){
+                return {
+                    ...state,
+                    recipes: state.recipesCopy.sort(function (a, b) {
+                        console.log(a.spoonacularScore, b.spoonacularScore)
+                        if (a.spoonacularScore < b.spoonacularScore) {
+                            
+                            return 1;
+                          }
+                        else if (a.spoonacularScore > b.spoonacularScore) {
+                            return -1;
+                          }
+                        })
+                }
+            }
+            else {
+                return {
+                    ...state,
+                    recipes: state.recipesCopy.sort(function (a, b) {
+                        if (a.spoonacularScore > b.spoonacularScore) {
+                            return 1;
+                          }
+                        else if (a.spoonacularScore < b.spoonacularScore) {
+                            return -1;
+                          }
+                        })
+                }
+            }
+        }
+        case FilterByDiet: {
+            return {
+                ...state,
+                recipes: state.recipesCopy.filter(e=> e.diets?.includes(payload))
+            }
+
         }
         default: return initialState
     }

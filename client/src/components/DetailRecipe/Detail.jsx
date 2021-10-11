@@ -21,7 +21,8 @@ export default function Detail (props){
     
     if (rec){
         // let Instructions = rec.recipe.analyzedInstructions[0].steps//Ver como recibe las instrucciones
-        console.log(rec.recipe.analyzedInstructions)
+        console.log(rec.recipe.analyzedInstructions);
+        let num = 1;
     return (
         <div className = "DetailCss">
             <NavBar/>
@@ -40,7 +41,7 @@ export default function Detail (props){
                 <h1 className = "TitleStep">
                     Step by Step!
                 <ul className = "Pasos">
-                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li> {p.number} : {p.step}</li>) : <li>Not Available</li>}
+                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li> {num++}:{p.step}</li>) : <li>{num++}:{rec.recipe.analyzedInstructions}</li>}
                 </ul>
                 </h1>
             </div>
