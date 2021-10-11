@@ -122,13 +122,14 @@ router.get("/:id", async (req,res) => {
             let ApiRespuesta = filter(ApiRes);
 
             let pasos = [];
-            ApiRespuesta.analyzedInstructions?ApiRespuesta.analyzedInstructions.steps.forEach(s =>{
+            ApiRespuesta.analyzedInstructions? ApiRespuesta.analyzedInstructions.steps.forEach(s =>{
             let paso = {
-                number: s.number,
                 step: s.step
             }
             pasos.push(paso)
             }): null
+
+            ApiRespuesta.analyzedInstructions = pasos;
             
             //Si encontró algo, pregunto si en verdad es un dato válido o es undefined
             if (ApiRespuesta.id !== undefined){
