@@ -13,6 +13,11 @@
     font-family: 'Bebas Neue', cursive;
     font-size: 24px;
     color: white;
+    transition:all .7s ease-in-out;
+
+}
+.Card:hover{
+    -webkit-transform:scale(0.5);transform:scale(0.9);
 }
 .Img{
     /* width: 350px; */
