@@ -61,7 +61,7 @@ return (
               {
                   recipesToShow.map(p => {
                       return (
-                          <Link to = {`/home/${p.id}`} className = "link">
+                          <Link to = {`/home/${p.id}`} className = "link" key = {p.id}>
                             <Card
                                 img = {p.image}
                                 name = {p.title}

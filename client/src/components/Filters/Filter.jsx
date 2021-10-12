@@ -34,20 +34,20 @@ export default function Filter () {
     return (
         <div className = "Filter">
             <select className = "Letter" onChange={handleSelectAlphabetic} name="A-Z/Z-A">
-                <option value="OrderByASC" disabled selected>Order by letter</option>
+                <option value="OrderByASC" disabled defaultValue>Order by letter</option>
                 <option value="ASC">A-Z</option>
                 <option value="DESC">Z-A</option>
             </select>
             <select className = "Score" onChange={handleSelectScore} name="Score">
-                <option value="OrderByScore" disabled selected>Order by Score</option>
+                <option value="OrderByScore" disabled defaultValue>Order by Score</option>
                 <option value="MaxMin">Max-Min score</option>
                 <option value="MinMax">Min-Max score</option>
             </select>
             <select className = "Diet" onChange={handleSelectDiet}name="Dietas">
-            <option value="OrderByDiets" disabled selected>Order by Diets</option>
+            <option value="OrderByDiets" disabled defaultValue>Order by Diets</option>
             <option value="ALL">All</option>
             {dietas.map(d => 
-                <option value = {d.name}>{d.name}</option>
+                <option key ={d.name} value = {d.name}>{d.name}</option>
             )}
             </select>
         </div>

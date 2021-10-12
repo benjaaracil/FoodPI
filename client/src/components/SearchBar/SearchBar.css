@@ -6,6 +6,7 @@
     height: 30px;
     font-family: 'Bebas Neue', cursive;
     font-size: 20px;
+    padding-left: 0;
 }
 .button {
     height: 35px;

@@ -99,8 +99,8 @@ function handleChangeCheck(e){
             {/* Checkbox dietas */}
             <div className = "Checking">
                 {/* {console.log("Dietas", dietas)} */}
-                {dietas.map(d => 
-                    <div>
+                {dietas.map((d,index) => 
+                    <div key = {index}>
                         <label>{d.name}</label>
                         <input className = "CheckingBox"type='checkbox' onChange={(e) => handleChangeCheck(e)} name={d.name} id = {d.id}/>
                     </div>

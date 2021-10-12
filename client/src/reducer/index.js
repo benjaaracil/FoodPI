@@ -35,11 +35,11 @@ function rootReducer (state = initialState, {type, payload}){
             if (payload === "ASC"){
                 return {
                     ...state,
-                    recipes: state.recipesCopy.sort(function (a, b) {
-                            if (a.title > b.title) {
+                    recipes: state.recipes.sort(function (a, b) {
+                            if (a.title.toLowerCase() > b.title.toLowerCase()) {
                               return 1;
                             }
-                            if (a.title < b.title) {
+                            if (a.title.toLowerCase() < b.title.toLowerCase()) {
                               return -1;
                             }
                             return 0
@@ -49,11 +49,11 @@ function rootReducer (state = initialState, {type, payload}){
             else {
                 return {
                     ...state,
-                    recipes: state.recipesCopy.sort(function (a, b) {
-                            if (a.title < b.title) {
+                    recipes: state.recipes.sort(function (a, b) {
+                            if (a.title.toLowerCase() < b.title.toLowerCase()) {
                               return 1;
                             }
-                            if (a.title > b.title) {
+                            if (a.title.toLowerCase() > b.title.toLowerCase()) {
                               return -1;
                             }
                             return 0
@@ -65,8 +65,8 @@ function rootReducer (state = initialState, {type, payload}){
             if (payload === "MaxMin"){
                 return {
                     ...state,
-                    recipes: state.recipesCopy.sort(function (a, b) {
-                        console.log(a.spoonacularScore, b.spoonacularScore)
+                    recipes: state.recipes.sort(function (a, b) {
+                        // console.log(a.spoonacularScore, b.spoonacularScore)
                         if (a.spoonacularScore < b.spoonacularScore) {
                             
                             return 1;
@@ -80,7 +80,7 @@ function rootReducer (state = initialState, {type, payload}){
             else {
                 return {
                     ...state,
-                    recipes: state.recipesCopy.sort(function (a, b) {
+                    recipes: state.recipes.sort(function (a, b) {
                         if (a.spoonacularScore > b.spoonacularScore) {
                             return 1;
                           }
@@ -100,7 +100,7 @@ function rootReducer (state = initialState, {type, payload}){
             }
             return {
                 ...state,
-                recipes: state.recipesCopy.filter(e=> e.diets?.includes(payload))
+                recipes: state.recipes.filter(e=> e.diets?.includes(payload))
             }
 
         }
