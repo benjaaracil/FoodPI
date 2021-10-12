@@ -9,7 +9,10 @@ import "./Nav.css";
 export default function NavBar(){
 return (
     <div className = "Nav">
-        <img src={Icon} className = "img" onClick={ () => window.location.href="/home"}/>
+        {/* <img src={Icon} className = "img" onClick={ () => window.location.href="/home"}/> */}
+        <Link to = "/home">
+            <img src = {Icon} className = "img"/>
+        </Link>
         <SearchBar/>
         <Link className = "LinkCreateRecipe" to='/create'>
             Create Recipe

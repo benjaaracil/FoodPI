@@ -92,6 +92,12 @@ function rootReducer (state = initialState, {type, payload}){
             }
         }
         case FilterByDiet: {
+            if (payload === "ALL"){
+                return {
+                    ...state,
+                    recipes: state.recipesCopy
+                }
+            }
             return {
                 ...state,
                 recipes: state.recipesCopy.filter(e=> e.diets?.includes(payload))

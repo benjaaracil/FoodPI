@@ -1,10 +1,21 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { postRecipes } from "../../actions";
+import NavBar from "../NavBar/NavBar";
 import "./Create.css"
 
-export default function Create(){
+export function validate(input) {   // 7- ESTAS SON LAS VALIDACIONES "EN VIVO", PARA VER SI LO QUE ESCRIBE EL USUARIO ESTA YENDO BIEN O NO
+    let errors = {};
+    if (!input.title) {
+     errors.title ='Title is required'; //el usuario tiene que escribir algo como minimo
+    }
+    if(!input.summary){
+       errors.summary = "Summary is required" //el usuario tiene que escribir algo como minimo
+    }
+    return errors;
+};
 
+export default function Create(){
 const dietas = useSelector(state => state.diets);
 
 const [input, setInput] = React.useState({
@@ -15,14 +26,25 @@ const [input, setInput] = React.useState({
     analyzedInstructions:'',
     dietName:[]
   })
-//   console.log(input)
+
+const [errors, setErrors] = React.useState({
+    title: "",
+    summary: ""
+})
 
 function handleSubmit(e){
     e.preventDefault();
-    postRecipes(input);
+    if (!input.title || !input.summary){
+        setErrors(validate({title: input.title, summary: input.summary}));
+    }
+    else {
+        postRecipes(input);
+        alert ("Recipe created succesfully!");
+    };
 }
 
 function handleChange(e){
+    setErrors({})
     setInput({
         ...input,
         [e.target.name] : e.target.value
@@ -45,48 +67,49 @@ function handleChangeCheck(e){
 }
 
 
-// onSubmit = {(e) => handleSubmit(e)}
+// console.log(errors)
     return (
+    <div>
+        <NavBar/>
         <form onSubmit = {(e) => handleSubmit(e)} className="Form">
-            <div>
-                <label>Title</label>
-                <input type = "text" name = "title" onChange={(e) => handleChange(e)} ></input>
-
-                <label>Summary</label>
-                <input type = "text" name = "summary" onChange={(e) => handleChange(e)}></input>
-
-                <label>Score</label>
-                <input type = "integer" name = "spoonacularScore" onChange={(e) => handleChange(e)}></input>
-
-                <label>Health Score</label>
-                <input type = "integer" name = "healthScore" onChange={(e) => handleChange(e)}></input>
-
-                <label>Instructions</label>
+            <div className = "DivInputs">
+                <div className ="DivChiquito">
+                    <label className = "Titulo">Title</label>
+                    <input value = {input.title} type = "text" name = "title" onChange={(e) => handleChange(e)} ></input>
+                </div>
+                    <p className = "Error">{errors.title? errors.title :null}</p>
+            <div className ="DivChiquito">
+                <label className = "Titulo">Summary</label>
+                <input className = {errors.summary} value = {input.summary} type = "text" name = "summary" onChange={(e) => handleChange(e)}></input>
+            </div>
+                <p className = "Error">{errors.summary? errors.summary :null}</p>
+            <div className ="DivChiquito">    
+                <label className = "Titulo">Score</label>
+                <input type = "number" min = "0" max = "100" name = "spoonacularScore" onChange={(e) => handleChange(e)}></input>
+            </div>
+            <div className ="DivChiquito">
+                <label className = "Titulo">Health Score</label>
+                <input type = "number" min = "0" max = "100" name = "healthScore" onChange={(e) => handleChange(e)}></input>
+            </div>
+            <div className ="DivChiquito">
+                <label className = "Titulo">Instructions</label>
                 <input type = "text" name = "analyzedInstructions" onChange={(e) => handleChange(e)}></input>
             </div>
+            </div>
             {/* Checkbox dietas */}
-            <div>
+            <div className = "Checking">
                 {/* {console.log("Dietas", dietas)} */}
                 {dietas.map(d => 
                     <div>
                         <label>{d.name}</label>
-                        <input type='checkbox' onChange={(e) => handleChangeCheck(e)} name={d.name} id = {d.id}/>
+                        <input className = "CheckingBox"type='checkbox' onChange={(e) => handleChangeCheck(e)} name={d.name} id = {d.id}/>
                     </div>
                 )}
             </div>
             {/* // */}
             
-            <button type="submit">Create Recipe</button> 
+            {!errors.title && !errors.summary? <button className = "Button" type="submit" >Create Recipe</button> : <button className = "Button" type="submit" disabled>Create Recipe</button>  } 
         </form>
+    </div>
     )
 }
-// Ruta de creación de recetas: debe contener
-
-// [ ] Un formulario controlado con los siguientes campos
-// Nombre
-// Resumen del plato
-// Puntuación
-// Nivel de "comida saludable"
-// Paso a paso
-// [ ] Posibilidad de seleccionar/agregar uno o más tipos de dietas
-// [ ] Botón/Opción para crear una nueva receta

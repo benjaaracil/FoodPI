@@ -12,10 +12,12 @@
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px;
     /* top: 0px; */
+    z-index: 1;
 }
 .img{
     cursor: pointer;
     transition:all .5s ease-in-out;
+    width: 100px;
 }
 .img:hover {
     filter: grayscale(80%);

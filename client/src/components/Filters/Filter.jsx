@@ -45,6 +45,7 @@ export default function Filter () {
             </select>
             <select className = "Diet" onChange={handleSelectDiet}name="Dietas">
             <option value="OrderByDiets" disabled selected>Order by Diets</option>
+            <option value="ALL">All</option>
             {dietas.map(d => 
                 <option value = {d.name}>{d.name}</option>
             )}

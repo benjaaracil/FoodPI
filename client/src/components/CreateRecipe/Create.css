@@ -1,7 +1,56 @@
 .Form {
     display: flex;
-    justify-content: center;
-    text-align: center;
+    /* justify-content: center; */
+    /* text-align: center; */
     flex-direction: column;
     width: 30%;
+    padding-top: 140px;
+    color: whitesmoke;
+    /* border: 2px black solid; */
+    padding-left: 650px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+}
+.Titulo{
+    margin-right: 20px;
+    padding: 3px;
+    border-radius: 5px;
+}
+.Checking{
+    background-color: rgba(0, 0, 0, 0.548);
+    padding: 10px;
+}
+.CheckingBox{
+    margin-left: 10px;
+    width: 30px;
+    height: 20px;
+}
+.Error{
+    color: red;
+}
+.Button{
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+}
+.DivInputs{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+}
+.DivChiquito{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(0, 0, 0, 0.609);
+    justify-content:space-between;
+    margin-top: 5px;
+    margin-bottom: 7px;
+
+}
+input{
+    width: 300px;
+    padding-left: 30px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 30px;
+    outline: none;
 }
