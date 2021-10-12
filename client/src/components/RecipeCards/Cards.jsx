@@ -51,7 +51,7 @@ return (
             </div>
             <div className = "Botonera">
                     <button className = "Back"onClick={lastPage}>
-                        Back
+                        Prev
                     </button>
                     <button className = "Next" onClick={nextPage}>
                         Next

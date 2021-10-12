@@ -35,12 +35,14 @@
     font-size: 20px;
     padding: 5px;
     width: 100px;
+    border-radius: 7px;
 }
 .Next{
     font-family: 'Bebas Neue', cursive;
     font-size: 20px;
     padding: 5px;
     width: 100px;
+    border-radius: 7px;
 }
 .Fondito{
     width: 100%;
