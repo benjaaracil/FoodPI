@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('recipe', {
     id: {
-      type: DataTypes.UUID,           //Cuando haga el post tengo que requerirlo como UUIDV4...
+      type: DataTypes.UUID,           
       defaultValue: DataTypes.UUIDV4, 
       primaryKey: true
     },

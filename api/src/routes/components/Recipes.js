@@ -65,13 +65,9 @@ router.get("/", async (req,res) => {
             ApiRes = mapping(ApiRes);
             // console.log(ApiRes)
         let LocalRes = await Recipe.findAll({
-            include: [{
-                model: Diet,
-                attributes: ["name"],
-                through: {
-                    attributes: []
-                }
-            }]
+            include: {
+                model: Diet
+            }
         })
         LocalRes = normalizationWithoutID(LocalRes)
         // console.log(LocalRes)
