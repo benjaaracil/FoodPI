@@ -1,8 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+import Landing from "../src/components/Landing/Landing";
+import Detail from "../src/components/DetailRecipe/Detail";
+import { MemoryRouter } from 'react-router-dom';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+test('Rederiza texto de bienvenida', () => {
+  render(<Landing />, { wrapper: MemoryRouter })
+  
+  expect(screen.getByText('Home')).toBeInTheDocument()
+})
