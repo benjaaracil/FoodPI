@@ -57,7 +57,7 @@ router.get("/", async (req,res) => {
     } else {
         try{
             //ApiRes contiene los datos de la Api
-            let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=5`);
+            let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=100`);
             // let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=100`);
             let ApiRes = await response.json();
             
