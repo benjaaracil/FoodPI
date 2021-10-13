@@ -15,9 +15,6 @@ const dispatch = useDispatch();
         React.useEffect(() => {
             (async () => {
                 dispatch(await getRecipes())
-                //Si hago una nueva busqueda se posiciona de nuevo en la primer pag:
-                // setCurrent(0)
-                //
             })()
           },[])
 //-----------------------------------------------------------

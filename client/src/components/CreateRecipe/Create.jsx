@@ -21,7 +21,7 @@ const [errors, setErrors] = React.useState({
     summary: ""
 })
 
-function validate(input) {   // 7- ESTAS SON LAS VALIDACIONES "EN VIVO", PARA VER SI LO QUE ESCRIBE EL USUARIO ESTA YENDO BIEN O NO
+function validate(input) {
     let errors = {};
     if (!input.title) {
      errors.title ='Title is required'; //el usuario tiene que escribir algo como minimo

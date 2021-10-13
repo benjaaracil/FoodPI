@@ -93,3 +93,15 @@ export function filterByDiet(Diet){
         payload: Diet
     }
 }
+
+// export function getDiets(){
+//     return function(){
+//         return axios.get(`http://localhost:3001/types`).data
+//             .then(res => {
+//               return {type: GetDiets, payload: res}
+//             })
+//             .catch(err =>{
+//                 console.log(err.message)
+//             })
+//     }
+// }
