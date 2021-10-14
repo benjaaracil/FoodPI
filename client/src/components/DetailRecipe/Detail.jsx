@@ -38,7 +38,7 @@ export default function Detail (props){
                 <h1 className = "TitleStep">
                     Step by Step!
                 <ul className = "Pasos">
-                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li key={p.number}>{p.step}</li>) : null }
+                    {Array.isArray(rec.recipe.analyzedInstructions)? rec.recipe.analyzedInstructions.map(p => <li key={p.number + p.step.slice(0,4)}>{p.step}</li>) : null }
                     {Array.isArray(rec.recipe)? rec.recipe[0].analyzedInstructions : "Not available"}
                 </ul>
 

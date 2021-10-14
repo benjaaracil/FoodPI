@@ -67,11 +67,11 @@ function rootReducer (state = initialState, {type, payload}){
                     ...state,
                     recipes: state.recipes.sort(function (a, b) {
                         // console.log(a.spoonacularScore, b.spoonacularScore)
-                        if (a.spoonacularScore < b.spoonacularScore) {
+                        if (a.healthScore < b.healthScore) {
                             
                             return 1;
                           }
-                        else if (a.spoonacularScore > b.spoonacularScore) {
+                        else if (a.healthScore > b.healthScore) {
                             return -1;
                           }
                         })
@@ -81,10 +81,10 @@ function rootReducer (state = initialState, {type, payload}){
                 return {
                     ...state,
                     recipes: state.recipes.sort(function (a, b) {
-                        if (a.spoonacularScore > b.spoonacularScore) {
+                        if (a.healthScore > b.healthScore) {
                             return 1;
                           }
-                        else if (a.spoonacularScore < b.spoonacularScore) {
+                        else if (a.healthScore < b.healthScore) {
                             return -1;
                           }
                         })
