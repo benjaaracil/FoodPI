@@ -15,7 +15,7 @@ describe('Recipe model', () => {
           .catch(() => done());
       });
       it('Deberia funcionar si es un nombre valido', () => {
-        Recipe.create({ title: 'Pescado con hierbas' });
+        return Recipe.create({ title: "Pescado", summary:"Alto pescado" });
       });
     });
   });
