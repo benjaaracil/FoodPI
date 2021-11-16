@@ -7,10 +7,6 @@
     place-items: bottom;
     position:fixed;
     border-bottom: 2px solid RGB(36, 26 , 17);
-    border-left: 3px solid RGB(36, 26 , 17);
-    border-right: 3px solid RGB(36, 26 , 17);
-    border-bottom-right-radius: 40px;
-    border-bottom-left-radius: 40px;
     /* top: 0px; */
     z-index: 1;
 }

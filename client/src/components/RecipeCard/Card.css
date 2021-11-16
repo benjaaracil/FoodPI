@@ -4,8 +4,7 @@
     flex-direction: column;
     width: 400px;
     height: 400px;
-    border: 1px solid;
-    border-color: black;
+    border: 2px solid RGB(36, 26 , 17);
     padding: 20px;
     background-color: RGB(73, 17 , 2);
     /* background-image: url("../../img/FondoHome.jpg"); */

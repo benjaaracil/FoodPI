@@ -1,18 +1,13 @@
 .Cards{
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
     margin-top: 60px;
-    /* background-image: url("../../img/FondoHome.jpg");
-    background-position: right; */
 }
 .link{
     text-decoration: none;
-    /* margin-top: 10px; */
-    /* padding: 10px; */
 }
 .Cargando{
     display: flex;
@@ -31,18 +26,40 @@
     justify-content: center;
 }
 .Back{
-    font-family: 'Bebas Neue', cursive;
-    font-size: 20px;
-    padding: 5px;
     width: 100px;
-    border-radius: 7px;
+    font-family: 'Bebas Neue', cursive;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: RGB(73, 17 , 2);
+    border-radius: 6px;
+    border: 2px solid RGB(36, 26 , 17);
+    padding: 10px;
+    transition:all .5s ease-in-out;
+    cursor: pointer;
+}
+.Back:hover{
+    color: RGB(73, 17 , 2);
+    background-color: #ffffff;
 }
 .Next{
-    font-family: 'Bebas Neue', cursive;
-    font-size: 20px;
-    padding: 5px;
     width: 100px;
-    border-radius: 7px;
+    font-family: 'Bebas Neue', cursive;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: RGB(73, 17 , 2);
+    border-radius: 6px;
+    border: 2px solid RGB(36, 26 , 17);
+    padding: 10px;
+    transition:all .5s ease-in-out;
+    cursor: pointer;
+}
+.Next:hover {
+    color: RGB(73, 17 , 2);
+    background-color: #ffffff;
 }
 .Fondito{
     width: 100%;
