@@ -30,8 +30,19 @@
     background-color: rgba(255, 255, 255, 0.561);
 }
 .Button{
+    /* font-family: 'Bebas Neue', cursive;
+    font-size: 30px; */
     font-family: 'Bebas Neue', cursive;
+    text-decoration: none;
+    font-weight: 600;
     font-size: 30px;
+    color: #ffffff;
+    background-color: RGB(73, 17 , 2);
+    border-radius: 6px;
+    border: 2px solid RGB(36, 26 , 17);
+    padding: 10px;
+    transition: all .5s ease-in-out;
+    cursor: pointer;
 }
 .DivInputs{
     display: flex;

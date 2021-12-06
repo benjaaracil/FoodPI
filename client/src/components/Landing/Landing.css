@@ -1,54 +1,75 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-.App{
-  margin: 0;
-  line-height: 1,6;
-  font-family: 'Bebas Neue', cursive;
-  color: aliceblue;
-
-}
-#showcase{
-  background-image: url(../../img/FondoHome.jpg);
-  background-size: cover;
-  background-position: center;
+.contenedorGeneral{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
   height: 100vh;
+}
+.landingContainer{
   display: flex;
   flex-direction: column;
-  justify-content: right;
   align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100vh;
 }
-.Link{
-  background: transparent;
-  text-decoration: none;
-  font-size: 100px;
-  color: black;
-  opacity: 70%;
-  font-size: 320px;
-  transition:all .5s ease-in-out;
-  /* border: 1px solid; */
-  /* border-color: RGB(100, 83 , 50);
-  background-color: RGB(100, 83 , 50); */
-}
-.Link:hover{
-opacity: 85%;
-/* transition:all .5s ease-in-out; */
-}
-.Content{
-  position: absolute;
-  right: 10%;
-  bottom: 45%;
+.Logo{
+  width: 350px;
+  height: 40vh;
 }
 .Join{
-  position: absolute;
-  right: 13%;
-  bottom: 47%;
-  font-size: 50px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 240%;
+  color: whitesmoke;
 }
-#Logo{
-  position: absolute;
-  right: 11%;
-  bottom: 1%;
-  width: 490px;
+
+.Content{
+  margin-bottom: -10%;
+}
+
+.Link{
+  font-size: 800%;
+  text-decoration: none;
+  color: black;
+  opacity: 70%;
+  transition:all .5s ease-in-out;
+  font-family: 'Bebas Neue', cursive;
+}
+.Link:hover{
+  opacity: 85%;
+}
+
+@media (max-width: 1090px) {
+  .contenedorGeneral{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+  }
+  .Link{
+    /* color: rgb(246, 155 , 91); */
+    /* color: rgb(30, 23 , 9); */
+    color: rgb(30, 23 , 9);
+    opacity: 100%;
+    /* -webkit-text-stroke: 0.1px rgb(30, 15 , 18); */
+    -webkit-text-stroke: 0.1px whitesmoke;
+  }
+  .Join{
+    color: rgb(30, 23 , 9);
+    -webkit-text-stroke: 0.1px rgb(246, 155 , 91);
+  }
+}
+
+@media (max-width: 500px) {
+  .Link{
+    font-size: 500%;
+    color: rgb(30, 23 , 9);
+    opacity: 100%;
+    -webkit-text-stroke: 0.1px rgb(244, 236 , 191);
+  }
+  .Join{
+    display: none;
+  }
+  .Logo{
+    width: 150%;
+  }
 }

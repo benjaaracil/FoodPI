@@ -71,7 +71,7 @@ function handleChangeCheck(e){
     return (
     <div>
         <NavBar/>
-        <form onSubmit = {(e) => handleSubmit(e)} className="Form">
+        <form onSubmit = {(e) => handleSubmit(e)} className="Form" autocomplete="off">
             <div className = "DivInputs">
                 <div className ="DivChiquito">
                     <label className = "Titulo">Title</label>
