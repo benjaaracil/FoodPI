@@ -38,12 +38,12 @@ export default function Filter () {
                 <option value="ASC">A-Z</option>
                 <option value="DESC">Z-A</option>
             </select>
-            <select className = "Score" onChange={handleSelectScore} name="Score">
+            <select className = "Letter" onChange={handleSelectScore} name="Score">
                 <option value="OrderByScore" disabled defaultValue>Order by Score</option>
                 <option value="MaxMin">Max-Min score</option>
                 <option value="MinMax">Min-Max score</option>
             </select>
-            <select className = "Diet" onChange={handleSelectDiet}name="Dietas">
+            <select className = "Letter" onChange={handleSelectDiet}name="Dietas">
             <option value="OrderByDiets" disabled defaultValue>Order by Diets</option>
             <option value="ALL">All</option>
             {dietas.map(d => 

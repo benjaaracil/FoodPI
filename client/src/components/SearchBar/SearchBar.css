@@ -1,6 +1,6 @@
-.Search {
-    margin-top: 35px;
-}
+/* .Search {
+    justify-content: unset;
+} */
 .input {
     width: 250px;
     height: 30px;
@@ -14,4 +14,16 @@
     font-family: 'Bebas Neue', cursive;
     font-size: 19px;
     margin-left: 5px;
+}
+
+@media (max-width: 810px){
+    .input{
+        width: 100px;
+        height: 100%;
+    }
+    .button{
+        height: 100%;
+        width: 60px;
+        /* font-size: 15px; */
+    }
 }
