@@ -35,6 +35,10 @@
     margin: 0;
     padding: 0;
     background-color: transparent;
+    transition: 0.2s 0.1s;
+}
+.ham:hover{
+    transform: rotate(360deg);
 }
 
 .ham span{
@@ -56,9 +60,9 @@
 
 /* VERSION MOBILE */
 @media (max-width: 810px){
-    body{
+    /* body{
         overflow: hidden;
-    }
+    } */
     .img{
         padding-left: 25px;
         width: 115px;
@@ -94,4 +98,14 @@
 /* Esto se va a activar para mostrar el menu desplegable */
 .menu.activado{
     display: flex;
+}
+.br-1.animado{
+    transform: rotate(-45deg) translate(-10px, 8px); 
+}
+.br-2.animado{
+    opacity: 0;
+}
+.br-3.animado{
+    transform: rotate(45deg) translate(-10px, -8px);
+    
 }
