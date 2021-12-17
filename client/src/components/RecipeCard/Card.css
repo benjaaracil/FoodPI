@@ -27,7 +27,7 @@
     border: black;
 }
 .TitleCard{
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     margin-top: 5px;
     text-decoration: underline;
@@ -39,5 +39,11 @@
 }
 
 @media (max-width: 810px){
-    
+    .TitleCard{
+        font-size: 17px;
+    }
+    .Card{
+        width: 320px;
+        height: 340px;
+    }
 }

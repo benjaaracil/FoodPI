@@ -12,32 +12,34 @@ const enlaces = useRef(null);
 const barra1 = useRef(null);
 const barra2 = useRef(null);
 const barra3 = useRef(null);
+const navegador = useRef(null);
 // const ham = document.querySelector(".ham");
 // const enlaces = document.querySelector("menu");
 // const barras = document.querySelectorAll(".ham span");
 
 function handleClick(){
     enlaces.current.classList.toggle("activado")
-    console.log("Antes", barra1.current)
-    console.log("Antes", barra2.current)
-    console.log("Antes", barra3.current)
+    // console.log("Antes", barra1.current)
+    // console.log("Antes", barra2.current)
+    // console.log("Antes", barra3.current)
     barra1.current.classList.toggle("animado")
     barra2.current.classList.toggle("animado")
     barra3.current.classList.toggle("animado")
-    console.log("Despues", barra1.current)
-    console.log("Despues", barra2.current)
-    console.log("Despues", barra3.current)
+    navegador.current.classList.toggle("animado")
+    // console.log("Despues", barra1.current)
+    // console.log("Despues", barra2.current)
+    // console.log("Despues", barra3.current)
 }
 
 return (
-    <nav className = "Nav">
+    <nav ref={navegador} className = "Nav">
         <Link to = "/home">
             <img src = {Icon} className = "img"/>
         </Link>
         <ul className="menu" ref={enlaces}>
-          <li><SearchBar/></li>
-          <li><Link className = "LinkCreateRecipe" to='/create'> Create Recipe </Link></li>
-          <li><Filter/></li>
+          <li className="l1"><SearchBar/></li>
+          <li className="l2"><Link className = "LinkCreateRecipe" to='/create'> Create Recipe </Link></li>
+          <li className="l3"><Filter/></li>
         </ul>
         <button onClick = {handleClick}className="ham" type="button">
             <span ref={barra1} className="br-1"></span>

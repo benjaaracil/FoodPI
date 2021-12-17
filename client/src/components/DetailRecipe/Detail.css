@@ -30,11 +30,14 @@
 .ImageRecipe{
     border-radius: 13px;
     padding-top: 10px;
+    max-width: 90%;
+
 }
 .Title{
     background-color: rgba(255, 255, 255, 0.589);
     padding: 10px;
     border-radius: 13px;
+    text-align: center;
 }
 .Pasos{
     background-color: rgba(0, 0, 0, 0.733);
@@ -53,4 +56,8 @@
     font-family: 'Bebas Neue', cursive;
     font-size: 70px;
     color: RGB(73, 17 , 2);
+}
+
+@media (max-width: 810px){
+
 }

@@ -1,13 +1,15 @@
 .Form {
     display: flex;
-    /* justify-content: center; */
+    /* align-content: center; */
     /* text-align: center; */
-    flex-direction: column;
+    flex-direction:column;
+    margin: 0 60%; 
+    /* width:250px; */
     width: 35%;
     padding-top: 140px;
     color: whitesmoke;
     /* border: 2px black solid; */
-    padding-left: 1150px;
+    /* padding-left: 1150px; */
     font-family: 'Bebas Neue', cursive;
     font-size: 30px;
 }
@@ -60,9 +62,30 @@
 
 }
 input{
-    width: 300px;
-    padding-left: 10px;
+    /* width: 300px; */
+    /* padding-left: 10px; */
     font-family: 'Bebas Neue', cursive;
-    font-size: 30px;
+    font-size: 20px;
     outline: none;
+    width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 2px solid #ccc;
+        box-sizing: border-box;
+}
+
+@media (max-width: 1230px){
+    .Form {
+        margin: 0 auto; 
+        width: 35%;
+        padding-top: 140px;
+        font-size: 30px;
+    }
+    .DivInputs{
+        text-align: center;
+    }
+    .Checking{
+        font-size: 60%;
+    }
 }

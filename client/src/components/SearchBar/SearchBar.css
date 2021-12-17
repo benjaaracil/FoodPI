@@ -10,16 +10,16 @@
 }
 .button {
     height: 35px;
-    width: 55px;
+    width: 59px;
     font-family: 'Bebas Neue', cursive;
     font-size: 19px;
     margin-left: 5px;
 }
 
-@media (max-width: 810px){
+@media (max-width: 1230px){
     .input{
-        width: 100px;
-        height: 100%;
+        width: 40vw;
+        height: 30px;
     }
     .button{
         height: 100%;

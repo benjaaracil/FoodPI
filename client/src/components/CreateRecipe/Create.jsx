@@ -73,28 +73,28 @@ function handleChangeCheck(e){
         <NavBar/>
         <form onSubmit = {(e) => handleSubmit(e)} className="Form" autocomplete="off">
             <div className = "DivInputs">
-                <div className ="DivChiquito">
-                    <label className = "Titulo">Title</label>
+                
+                    <label className = "Titulo"><b>Title</b></label>
                     <input value = {input.title} type = "text" name = "title" onChange={(e) => handleChange(e)} ></input>
-                </div>
+
                     <p className = "Error">{errors.title? errors.title :null}</p>
-                <div className ="DivChiquito">
-                    <label className = "Titulo">Summary</label>
+                
+                    <label className = "Titulo"><b>Summary</b></label>
                     <input className = {errors.summary} value = {input.summary} type = "text" name = "summary" onChange={(e) => handleChange(e)}></input>
-                </div>
+
                     <p className = "Error">{errors.summary? errors.summary :null}</p>
-                <div className ="DivChiquito">    
-                    <label className = "Titulo">Score</label>
+                    
+                    <label className = "Titulo"><b>Score</b></label>
                     <input type = "number" min = "0" max = "100" name = "spoonacularScore" onChange={(e) => handleChange(e)}></input>
-                </div>
-                <div className ="DivChiquito">
-                    <label className = "Titulo">Health Score</label>
+
+                
+                    <label className = "Titulo"><b>Health Score</b></label>
                     <input type = "number" min = "0" max = "100" name = "healthScore" onChange={(e) => handleChange(e)}></input>
-                </div>
-                <div className ="DivChiquito">
-                    <label className = "Titulo">Instructions</label>
+
+                
+                    <label className = "Titulo"><b>Instructions</b></label>
                     <input type = "text" name = "analyzedInstructions" onChange={(e) => handleChange(e)}></input>
-                </div>
+
             </div>
             {/* Checkbox dietas */}
             <div className = "Checking">
