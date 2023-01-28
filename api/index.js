@@ -21,6 +21,10 @@ const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const {Diet} = require("./src/db.js");
 const PORT = process.env.PORT || 3001
+// Routes here (Before serving the static assets)
+const routes = require('./src/routes/index.js');
+server.use('/', routes);
+
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
   server.listen(PORT, () => {
