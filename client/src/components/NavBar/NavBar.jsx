@@ -13,27 +13,18 @@ const barra1 = useRef(null);
 const barra2 = useRef(null);
 const barra3 = useRef(null);
 const navegador = useRef(null);
-// const ham = document.querySelector(".ham");
-// const enlaces = document.querySelector("menu");
-// const barras = document.querySelectorAll(".ham span");
 
 function handleClick(){
     enlaces.current.classList.toggle("activado")
-    // console.log("Antes", barra1.current)
-    // console.log("Antes", barra2.current)
-    // console.log("Antes", barra3.current)
     barra1.current.classList.toggle("animado")
     barra2.current.classList.toggle("animado")
     barra3.current.classList.toggle("animado")
     navegador.current.classList.toggle("animado")
-    // console.log("Despues", barra1.current)
-    // console.log("Despues", barra2.current)
-    // console.log("Despues", barra3.current)
 }
 
 return (
     <nav ref={navegador} className = "Nav">
-        <Link to = "/home">
+        <Link className = "LinkImg" to = "/home" >
             <img src = {Icon} className = "img"/>
         </Link>
         <ul className="menu" ref={enlaces}>

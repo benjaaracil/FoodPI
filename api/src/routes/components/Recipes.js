@@ -12,10 +12,6 @@ const { Op } = require ("sequelize");
 require('dotenv').config();
 const {APP_API_KEY} = process.env;
 
-//Endpoint de prueba para ver si funca la pagina:
-// router.get("/", (req,res) => {
-//     res.send("Hola Mundo")
-// })
 router.get("/", async (req,res) => {
     //Evaluo si me llega algo por query y en caso de que si, si me coincide el name con algo de la api o mi db.
     if (req.query.name){
@@ -36,9 +32,6 @@ router.get("/", async (req,res) => {
                     model: Diet
                 }
             })
-            // console.log(LocalRes)
-            // console.log(LocalRes.length === 0);
-            // console.log(ApiRes.totalResults === 0);
             //mapeo para devolver los datos que se necesitan
             ApiRes = mapping(ApiRes);
             LocalRes = normalizationWithoutID(LocalRes);
@@ -58,7 +51,6 @@ router.get("/", async (req,res) => {
         try{
             //ApiRes contiene los datos de la Api
             let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=100`);
-            // let response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${APP_API_KEY}&addRecipeInformation=true&number=100`);
             let ApiRes = await response.json();
             
             //mapeo para devolver los datos que se necesitan

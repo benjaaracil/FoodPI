@@ -4,7 +4,7 @@ const router = express.Router();
 //Me traigo las tablas de la DB
 const {Diet} = require("../../db.js");
 
-router.get("/", async (req,res) => {  
+router.get("/", async (req,res) => {
     try{
         let Diets = await Diet.findAll();
         res.status(200).json(Diets);
